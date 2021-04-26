@@ -1,6 +1,8 @@
 package com.example.projetosemestralloja;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -27,55 +29,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.w("addONIMBList","tentando registro");
-
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-        addOnIMBList(R.drawable.button_place_holder, "titulo");
-
-
-
-        Log.w("addONIMBList","registro adicionado");
-
+        createIMBList();
         createButtons();
 
     }
 
-    public void createButtons(){
 
-        LinearLayout ll = findViewById(R.id.LinearLayoutMainSV);
-        for (PaginaInicialIMButton obj1 : IMButtonList) {
-            ImageButton ib = new ImageButton(this);
-            ib.setImageResource(obj1.getImage());
-            ib.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), SplashScreen.class);
-                    startActivity(intent);
-                }
-            });
-            ll.addView(ib);;
-        }
 
+    public void addOnIMBList(int imagem, String titulo, Class intent){
+        PaginaInicialIMButton imb = new PaginaInicialIMButton(imagem, intent, titulo);
+        IMButtonList.add(imb);
     }
 
-    public void addOnIMBList(int imagem, String titulo){
-        PaginaInicialIMButton imb = new PaginaInicialIMButton(imagem, titulo);
-        IMButtonList.add(imb);
+    public void createButtons(){
+        RecyclerView rvIMB = findViewById(R.id.IMB_Recycler);
+
+        LinearLayoutManager llhm = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        rvIMB.setLayoutManager(llhm);
+        IMButtonAdapter adapter = new IMButtonAdapter(IMButtonList, R.layout.buttonlayout){
+        };
+        rvIMB.setAdapter(adapter);
+    }
+
+    public void createIMBList(){
+        addOnIMBList(R.drawable.button_place_holder, "titulo1", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo2", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo3", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo4", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo5", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo6", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo7", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo8", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo9", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo10", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo11", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo12", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo13", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo14", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo15", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo16", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo17", SplashScreen.class);
     }
 
 }

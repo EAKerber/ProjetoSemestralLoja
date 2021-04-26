@@ -2,11 +2,13 @@ package com.example.projetosemestralloja;
 
 public class PaginaInicialIMButton {
     public int image;
+    public  Class intent;
     public String titulo;
 
-    public PaginaInicialIMButton(int image, String titulo) {
+    public PaginaInicialIMButton(int image, Class intent, String titulo) {
         this.image = image;
         this.titulo = titulo;
+        this.intent = intent;
     }
 
     public int getImage() {
