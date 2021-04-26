@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fd1"
+    android:background="@drawable/fundo"
     android:orientation="vertical"
     tools:context=".SplashScreen">
 
     <ImageView
         android:id="@+id/ritter_logo2"
-        android:layout_width="446dp"
-        android:layout_height="229dp"
+        android:layout_width="349dp"
+        android:layout_height="239dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lg2" />
+        app:layout_constraintVertical_bias="0.567"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
