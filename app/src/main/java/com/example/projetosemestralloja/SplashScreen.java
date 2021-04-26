@@ -13,7 +13,7 @@ import android.widget.ImageView;
 public class SplashScreen extends AppCompatActivity {
 
     ImageView logo_riter;
-    Animation animacao; /*teste*/
+    Animation animacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +32,10 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(getBaseContext(), MainActivity.class) );
+                finish();
 
             }
-        }, 8000);
+        }, 6000);
 
 
     }
