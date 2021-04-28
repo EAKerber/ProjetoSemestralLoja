@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class TelaLogin extends AppCompatActivity {
+public class TelaLogin2 extends AppCompatActivity {
     private EditText loginText;
     private EditText senhaText;
     private Button loginButton;
@@ -20,7 +20,7 @@ public class TelaLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_login);
+        setContentView(R.layout.activity_tela_login2);
 
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
