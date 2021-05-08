@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "554817989361",
+    "project_id": "projetosemestralloja-5b1b0",
+    "storage_bucket": "projetosemestralloja-5b1b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554817989361:android:679f5e046343eb86f29750",
+        "android_client_info": {
+          "package_name": "com.example.projetosemestralloja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "554817989361-utcnrg7ctk6jmbph555kjshnukdkao1m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKFwopctj5hbKspdxUVzrHLttaCx0BwQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554817989361-utcnrg7ctk6jmbph555kjshnukdkao1m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
