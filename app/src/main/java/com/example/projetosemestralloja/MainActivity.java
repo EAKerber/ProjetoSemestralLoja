@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     public void createIMBList(){
         addOnIMBList(R.drawable.button_place_holder, "Calça", ProdutoRecycler.class);
         addOnIMBList(R.drawable.button_place_holder, "Masculino", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo3", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "Feminino", ProdutoRecycler.class);
         addOnIMBList(R.drawable.button_place_holder, "titulo4", SplashScreen.class);
         addOnIMBList(R.drawable.button_place_holder, "titulo5", SplashScreen.class);
         addOnIMBList(R.drawable.button_place_holder, "titulo6", SplashScreen.class);

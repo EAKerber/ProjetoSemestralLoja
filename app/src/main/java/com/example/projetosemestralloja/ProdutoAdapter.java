@@ -1,6 +1,7 @@
 package com.example.projetosemestralloja;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,9 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
         tv.setText(produto.getTitle());
         tv = holder.view.findViewById(R.id.descricaoProduto);
         tv.setText(produto.getDescricao());
+
+        ImageLoader iml = new ImageLoader();
+        iml.loadImg(produto.getUrl(), holder.view.findViewById(R.id.produto_IM));
 
     }
 
