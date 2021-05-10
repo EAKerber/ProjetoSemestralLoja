@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginScreen extends AppCompatActivity {
     private EditText loginText;
     private EditText senhaText;
     private Button loginButton;
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login_screen);
         /*if (m.getValid() == 0) {
             m.setValid(1);
             m.onCreate();
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void inicializarBanco() {
-        FirebaseApp.initializeApp(MainActivity.this);
+        FirebaseApp.initializeApp(LoginScreen.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getInstance().getReference();

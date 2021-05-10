@@ -1,18 +1,12 @@
 package com.example.projetosemestralloja;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -73,7 +67,7 @@ public class CriarConta extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 startActivity(new Intent(getBaseContext(),
-                        MainActivity.class));
+                        LoginScreen.class));
             }
         });
     }
