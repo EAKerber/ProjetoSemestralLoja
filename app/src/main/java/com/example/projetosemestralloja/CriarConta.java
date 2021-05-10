@@ -67,7 +67,7 @@ public class CriarConta extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 startActivity(new Intent(getBaseContext(),
-                        LoginScreen.class));
+                        MainActivity.class));
             }
         });
     }

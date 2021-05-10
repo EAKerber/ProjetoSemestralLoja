@@ -70,7 +70,7 @@ public class RedefinirSenha extends AppCompatActivity {
             public void onClick(View v){
 
                 startActivity(new Intent(getBaseContext(),
-                        LoginScreen.class));
+                        MainActivity.class));
                 //m.disableDatabase();
             }
         });
