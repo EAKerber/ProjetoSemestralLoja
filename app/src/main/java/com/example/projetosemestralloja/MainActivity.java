@@ -1,5 +1,15 @@
 package com.example.projetosemestralloja;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,12 +31,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private EditText loginText;
+    private EditText senhaText;
+    private Button loginButton;
+    private Button altSenhaButton;
+    private Button convidadoButton;
+    private Button criarContaButton;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    MyFirebaseApp m = new MyFirebaseApp();
+
+    private List<Cliente> listCliente = new ArrayList<Cliente>();
+    private ArrayAdapter<Cliente> arrayAdapterCliente;
 
     List<PaginaInicialIMButton> IMButtonList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         createIMBList();

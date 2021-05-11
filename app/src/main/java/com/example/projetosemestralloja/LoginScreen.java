@@ -62,6 +62,7 @@ public class LoginScreen extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 pesquisarBanco(loginText.getText().toString(), senhaText.getText().toString());
+
             }
         });
         //Alterar para a próxima tela
@@ -71,6 +72,7 @@ public class LoginScreen extends AppCompatActivity {
                 startActivity(new Intent(getBaseContext(), MainActivity.class));
             }
         });
+
 
         altSenhaButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -140,8 +142,8 @@ public class LoginScreen extends AppCompatActivity {
                     //startActivity(new Intent(getBaseContext(), 'PROXIMA TELA'));
                     limparDados();
                     alert("Login efetuado com sucesso.");
+                  
                     startActivity(new Intent(getBaseContext(), MainActivity.class));
-
                     break;
                 }
             }
