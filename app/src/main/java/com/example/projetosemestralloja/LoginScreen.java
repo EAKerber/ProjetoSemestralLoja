@@ -66,12 +66,13 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
         //Alterar para a próxima tela
-        /*convidadoButton.setOnClickListener(new View.OnClickListener(){
+        convidadoButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(getBaseContext(), 'PROXIMA TELA'));
+                startActivity(new Intent(getBaseContext(), MainActivity.class));
             }
-        });*/
+        });
+
 
         altSenhaButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -141,6 +142,8 @@ public class LoginScreen extends AppCompatActivity {
                     //startActivity(new Intent(getBaseContext(), 'PROXIMA TELA'));
                     limparDados();
                     alert("Login efetuado com sucesso.");
+                  
+                    startActivity(new Intent(getBaseContext(), MainActivity.class));
                     break;
                 }
             }
