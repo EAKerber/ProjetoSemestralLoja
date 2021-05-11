@@ -141,6 +141,7 @@ public class LoginScreen extends AppCompatActivity {
                     limparDados();
                     alert("Login efetuado com sucesso.");
                     startActivity(new Intent(getBaseContext(), MainActivity.class));
+
                     break;
                 }
             }
