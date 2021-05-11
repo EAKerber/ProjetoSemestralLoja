@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetoSemestralLoja">
+        android:name="com.example.projetosemestralloja.MyFirebaseApp"
+        <activity android:name=".RedefinirSenha"></activity>
+        <activity android:name=".CriarConta" />
+
         <activity android:name=".ProdutoRecycler"></activity>
         <activity android:name=".SplashScreen">
             <intent-filter>
@@ -19,6 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".LoginScreen" />
+
         <activity android:name=".MainActivity" />
     </application>
 
