@@ -7,6 +7,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +29,9 @@ public class LoginScreen extends AppCompatActivity {
     private EditText loginText;
     private EditText senhaText;
     private Button loginButton;
-    private Button altSenhaButton;
-    private Button convidadoButton;
-    private Button criarContaButton;
+    private TextView altsenhaTextView;
+    private TextView convidadoTextView;
+    private TextView criarContaTextView;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     MyFirebaseApp m = new MyFirebaseApp();
@@ -51,9 +54,9 @@ public class LoginScreen extends AppCompatActivity {
         loginText = (EditText)findViewById(R.id.Usuario);
         senhaText = (EditText)findViewById(R.id.Senha);
         loginButton = (Button)findViewById(R.id.Acessar);
-        altSenhaButton = (Button)findViewById(R.id.Alt_senha);
-        convidadoButton = (Button)findViewById(R.id.Convidado);
-        criarContaButton = (Button)findViewById(R.id.CriarConta);
+        altsenhaTextView = (TextView)findViewById(R.id.alt_senha);
+        convidadoTextView = (TextView)findViewById(R.id.continuar_sem_login);
+        criarContaTextView = (TextView) findViewById(R.id.criar_conta_click);
         inicializarBanco();
         eventoDatabase();
         //Alterar quando for realizado o link com o banco de dados para realizar acesso
@@ -66,7 +69,7 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
         //Alterar para a próxima tela
-        convidadoButton.setOnClickListener(new View.OnClickListener(){
+        convidadoTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 startActivity(new Intent(getBaseContext(), MainActivity.class));
@@ -74,7 +77,7 @@ public class LoginScreen extends AppCompatActivity {
         });
 
 
-        altSenhaButton.setOnClickListener(new View.OnClickListener(){
+        altsenhaTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 startActivity(new Intent(getBaseContext(),
@@ -82,7 +85,7 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
-        criarContaButton.setOnClickListener(new View.OnClickListener(){
+        criarContaTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 startActivity(new Intent(getBaseContext(),
