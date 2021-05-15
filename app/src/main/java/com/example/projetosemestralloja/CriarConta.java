@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -50,17 +51,32 @@ public class CriarConta extends AppCompatActivity {
         criarContaButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                    int v_valid = 1;
-                    Cliente c = new Cliente();
-                    c.setUsuarioText(usuarioText.getText().toString());
-                    c.setSenhaText(senhaText.getText().toString());
-                    c.setCpfText(cpfText.getText().toString());
-                    c.setDataNascText(dataNascText.getText().toString());
-                    c.setEmailText(emailText.getText().toString());
-                    c.setNomeText(nomeText.getText().toString());
-                    databaseReference.child("Cliente").child(c.getCpfText()).setValue(c);
-                    limparDados();
-                    //fazer validações dos dados de entradas
+                    if (usuarioText.getText().toString().equals("") || senhaText.getText().toString().equals("") || cpfText.getText().toString().equals("")
+                     || dataNascText.getText().toString().equals("") || emailText.getText().toString().equals("") || nomeText.getText().toString().equals(""))
+                    {
+                        alert("Todos os dados devem ser preenchidos.");
+                    }else if (usuarioText.getText().toString().indexOf(" ") >= 0){
+                        alert("Favor informar 1 usuario sem espaços em branco.");
+                    }else if (ValidaCpf.isCPF(cpfText.getText().toString()) == false) {
+                        alert("Favor informar 1 CPF válido.");
+                    }else if (ValidaData.isData(dataNascText.getText().toString()) == false) {
+                        alert("Favor informar 1 data de nascimento válida.");
+                    }else if (ValidaEmail.isEmail(emailText.getText().toString())== false){
+                        alert("Favor informar 1 email válido.");
+                    }
+                    else{
+                        Cliente c = new Cliente();
+                        c.setUsuarioText(usuarioText.getText().toString());
+                        c.setSenhaText(senhaText.getText().toString());
+                        c.setCpfText(cpfText.getText().toString());
+                        c.setDataNascText(dataNascText.getText().toString());
+                        c.setEmailText(emailText.getText().toString());
+                        c.setNomeText(nomeText.getText().toString());
+                        databaseReference.child("Cliente").child(c.getCpfText()).setValue(c);
+                        limparDados();
+                        alert("Conta criada com sucesso.");
+                    }
+
             }
         });
         voltarButton.setOnClickListener(new View.OnClickListener() {
@@ -85,5 +101,8 @@ public class CriarConta extends AppCompatActivity {
         dataNascText.setText("");
         emailText.setText("");
         nomeText.setText("");
+    }
+    private void alert(String s){
+        Toast.makeText(getBaseContext(),s,Toast.LENGTH_SHORT).show();
     }
 }
