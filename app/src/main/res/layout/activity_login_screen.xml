@@ -53,7 +53,7 @@
         android:drawableStart="@drawable/valida_email_focado"
         android:drawablePadding="10dp"
         android:ems="14"
-        android:hint="E-mail"
+        android:hint="Usuario"
         android:inputType="textPersonName"
         android:scrollbarSize="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
