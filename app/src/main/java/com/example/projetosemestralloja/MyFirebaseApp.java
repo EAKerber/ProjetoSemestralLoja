@@ -1,20 +1,19 @@
 package com.example.projetosemestralloja;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MyFirebaseApp extends android.app.Application{
+    private static FirebaseAuth fbAuth;
+    private static FirebaseDatabase fbStore;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+    public static FirebaseDatabase getFirebaseDatabaseInstance() {
+        if (fbStore == null) {
+            fbStore = FirebaseDatabase.getInstance();
+        }
+        return fbStore;
     }
 
-    public void disableDatabase(){
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
-        valid = 0;
-    }
     private int valid;
 
     public int getValid() {
