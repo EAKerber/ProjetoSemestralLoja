@@ -74,8 +74,8 @@ public class CriarConta extends AppCompatActivity {
 
     private void inicializarBanco() {
         FirebaseApp.initializeApp(CriarConta.this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
+        firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
+        databaseReference = firebaseDatabase.getInstance().getReference();
     }
 
     private void limparDados() {

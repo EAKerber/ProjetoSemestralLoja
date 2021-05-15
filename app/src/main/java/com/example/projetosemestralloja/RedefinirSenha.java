@@ -44,7 +44,7 @@ public class RedefinirSenha extends AppCompatActivity {
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //m.onCreate();
+
         nomeText = (EditText)findViewById(R.id.Nome);
         cpfText = (EditText)findViewById(R.id.Cpf);
         emailText = (EditText)findViewById(R.id.Email);
@@ -77,8 +77,7 @@ public class RedefinirSenha extends AppCompatActivity {
     }
     private void inicializarBanco() {
         FirebaseApp.initializeApp(RedefinirSenha.this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(true);
+        firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
         databaseReference = firebaseDatabase.getInstance().getReference();
     }
     private void eventoDatabase() {
