@@ -1,5 +1,6 @@
 package com.example.projetosemestralloja;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +31,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,23 +81,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createIMBList(){
-        addOnIMBList(R.drawable.button_place_holder, "Calça", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.button_place_holder, "Masculino", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.button_place_holder, "Feminino", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo4", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo5", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo6", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo7", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo8", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo9", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo10", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo11", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo12", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo13", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo14", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo15", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo16", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo17", SplashScreen.class);
+
+        addOnIMBList(R.drawable.masculino, "Masculino", SplashScreen.class);
+        addOnIMBList(R.drawable.feminino, "Feminino", SplashScreen.class);
+        addOnIMBList(R.drawable.infantil, "Infantil", SplashScreen.class);
+        addOnIMBList(R.drawable.calca, "Calças", SplashScreen.class);
+        addOnIMBList(R.drawable.pijama, "Pijama", SplashScreen.class);
+        addOnIMBList(R.drawable.jaqueta, "Jaqueta", SplashScreen.class);
+        addOnIMBList(R.drawable.bermuda, "Bermuda", SplashScreen.class);
+        addOnIMBList(R.drawable.camisa, "Camisa", SplashScreen.class);
+
     }
 
 }
