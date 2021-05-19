@@ -42,13 +42,14 @@ public class IMButtonAdapter extends RecyclerView.Adapter<IMButtonAdapter.ViewHo
         im.setImageResource(IMB.getImage());
 
         CardView cv = holder.view.findViewById(R.id.ButtonCardView);
-        cv.setTag(IMB);
+        cv.setTag(IMB.getTitulo());
         cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CardView btn = (CardView) v;
-                PaginaInicialIMButton IMBu = (PaginaInicialIMButton) btn.getTag();
+                //CardView btn = (CardView) v;
+                //PaginaInicialIMButton IMBu = (PaginaInicialIMButton) btn.getTag();
                 Intent intent = new Intent(holder.view.getContext(), IMB.intent);
+                intent.putExtra("tag", IMB.getTitulo());
                 holder.view.getContext().startActivity(intent);
             }
         });
