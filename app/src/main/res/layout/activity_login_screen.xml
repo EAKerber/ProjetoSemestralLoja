@@ -71,10 +71,10 @@
         android:textColor="#0B0A0A"
         app:layout_constraintBottom_toBottomOf="@+id/img_manequin_login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintHorizontal_bias="0.193"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.514" />
+        app:layout_constraintTop_toBottomOf="@+id/Senha"
+        app:layout_constraintVertical_bias="0.013" />
 
     <Button
         android:id="@+id/Acessar"

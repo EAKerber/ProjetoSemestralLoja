@@ -13,8 +13,6 @@
         android:theme="@style/Theme.ProjetoSemestralLoja">
 
         android:name="com.example.projetosemestralloja.MyFirebaseApp"
-        <activity android:name=".RedefinirSenha"></activity>
-        <activity android:name=".CriarConta" />
 
         <activity android:name=".ProdutoRecycler"></activity>
 
@@ -25,15 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-//<<<<<<< branchCategoria
-        <activity
-            android:name=".MainActivity2"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar"></activity>
-//=======
-
         <activity android:name=".LoginScreen" />
-        <activity android:name=".MainActivity"/>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar"/>
         <activity android:name=".RedefinirSenha"/>
         <activity android:name=".CriarConta"/>
     </application>

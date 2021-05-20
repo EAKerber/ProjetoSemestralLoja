@@ -1,10 +1,10 @@
 package com.example.projetosemestralloja;
 
-import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MyFirebaseApp extends android.app.Application{
-    private static FirebaseAuth fbAuth;
+    //private static FirebaseAuth fbAuth;
     private static FirebaseDatabase fbStore;
 
     public static FirebaseDatabase getFirebaseDatabaseInstance() {
