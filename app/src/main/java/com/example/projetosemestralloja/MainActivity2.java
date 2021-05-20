@@ -70,14 +70,14 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void createIMBList(){
 
-        addOnIMBList(R.drawable.masculino, "Masculino", SplashScreen.class);
-        addOnIMBList(R.drawable.feminino, "Feminino", SplashScreen.class);
-        addOnIMBList(R.drawable.infantil, "Infantil", SplashScreen.class);
-        addOnIMBList(R.drawable.calca, "Calças", SplashScreen.class);
-        addOnIMBList(R.drawable.pijama, "Pijama", SplashScreen.class);
-        addOnIMBList(R.drawable.jaqueta, "Jaqueta", SplashScreen.class);
-        addOnIMBList(R.drawable.bermuda, "Bermuda", SplashScreen.class);
-        addOnIMBList(R.drawable.camisa, "Camisa", SplashScreen.class);
+        addOnIMBList(R.drawable.masculino, "Masculino", ProdutoRecycler.class);
+        addOnIMBList(R.drawable.feminino, "Feminino", ProdutoRecycler.class);
+        addOnIMBList(R.drawable.infantil, "Infantil", ProdutoRecycler.class);
+        addOnIMBList(R.drawable.calca, "Calças", ProdutoRecycler.class);
+        addOnIMBList(R.drawable.pijama, "Pijama", ProdutoRecycler.class);
+        addOnIMBList(R.drawable.jaqueta, "Jaqueta", ProdutoRecycler.class);
+        addOnIMBList(R.drawable.bermuda, "Bermuda", ProdutoRecycler.class);
+        addOnIMBList(R.drawable.camisa, "Camisa", ProdutoRecycler.class);
 
     }
 
