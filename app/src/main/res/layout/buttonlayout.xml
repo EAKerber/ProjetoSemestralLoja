@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:paddingEnd="10dp">
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/ButtonCardView"
         android:layout_width="wrap_content"
@@ -18,8 +19,10 @@
             <ImageView
                 android:id="@+id/imageViewPlaceHolder"
                 android:layout_width="match_parent"
+
                 android:layout_height="80dp"
                 android:scaleType="centerCrop"
+
                 app:srcCompat="@drawable/button_place_holder" />
 
             <TextView
