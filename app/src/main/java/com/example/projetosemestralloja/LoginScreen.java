@@ -73,7 +73,7 @@ public class LoginScreen extends AppCompatActivity {
         convidadoTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(getBaseContext(), MainActivity.class));
+                startActivity(new Intent(getBaseContext(), MainActivity2.class));
             }
         });
 
@@ -146,7 +146,7 @@ public class LoginScreen extends AppCompatActivity {
                     limparDados();
                     alert("Login efetuado com sucesso.");
                   
-                    startActivity(new Intent(getBaseContext(), MainActivity.class));
+                    startActivity(new Intent(getBaseContext(), MainActivity2.class));
                     break;
                 }
             }

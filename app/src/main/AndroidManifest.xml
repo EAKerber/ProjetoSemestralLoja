@@ -24,8 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginScreen" />
+        <activity android:name=".MainActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivity2"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar"/>
         <activity android:name=".RedefinirSenha"/>
