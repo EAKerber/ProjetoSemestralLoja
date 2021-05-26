@@ -58,4 +58,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.android.support:multidex:1.0.3'
+
+    //Biblioteca para mascara nos campos, CPF,Celular etc..
+    implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
 }
