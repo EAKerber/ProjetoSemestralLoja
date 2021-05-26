@@ -77,13 +77,13 @@
         android:id="@+id/Acessar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="70dp"
         android:drawableEnd="@drawable/icon_seta"
         android:text="Acessar"
         android:textColor="#101010"
+        app:layout_constraintBottom_toTopOf="@id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textView7"/>
+        app:layout_constraintTop_toBottomOf="@+id/alt_senha" />
 
     <TextView
         android:id="@+id/textView7"

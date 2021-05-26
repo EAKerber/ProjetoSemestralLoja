@@ -3,6 +3,7 @@ package com.example.projetosemestralloja;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,9 +37,10 @@ public class ProdutoRecycler extends AppCompatActivity
         setContentView(R.layout.activity_produto_recycler);
         Intent intent = getIntent();
         tag = intent.getStringExtra("tag");
+        Log.d("buttonadapter", "recebi " + tag);
 
-
-
+        TextView tv = findViewById(R.id.textView);
+        tv.setText(tag);
 
         RequestQueue queue = Volley.newRequestQueue(this);
         Log.d("criando queue", "queue criada");

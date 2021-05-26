@@ -3,18 +3,18 @@ package com.example.projetosemestralloja;
 import android.os.Bundle;
 import android.view.Menu;
 
-import com.example.projetosemestralloja.adapter.IMButtonAdapter;
-import com.google.android.material.navigation.NavigationView;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.projetosemestralloja.adapter.IMButtonAdapter;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     public void addOnIMBList(int imagem, String titulo, Class intent){
-        PaginaInicialIMButton imb = new PaginaInicialIMButton(imagem, intent, titulo);
+        PaginaInicialIMButton imb = new PaginaInicialIMButton(imagem, intent, titulo, this);
         IMButtonList.add(imb);
     }
 

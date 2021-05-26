@@ -1,7 +1,11 @@
 package com.example.projetosemestralloja.adapter;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +18,8 @@ import java.util.List;
 public class IMButtonAdapter extends RecyclerView.Adapter<IMButtonAdapter.IMBViewHolder>{
 
     private List<PaginaInicialIMButton> IMButtonList;
-    private  int layout;
+    private int layout;
+
 
     public IMButtonAdapter(List<PaginaInicialIMButton> IMButtons, int layout){
         this.IMButtonList = IMButtons;
@@ -33,6 +38,7 @@ public class IMButtonAdapter extends RecyclerView.Adapter<IMButtonAdapter.IMBVie
 
         PaginaInicialIMButton IMB = (PaginaInicialIMButton)this.IMButtonList.get(position);
         holder.view.setIMButton(IMB);
+        holder.view.setAdapter(this);
         /*
         TextView tv = holder.view.findViewById(R.id.textViewPlaceHolder);
         tv.setText(IMB.getTitulo());
@@ -52,6 +58,28 @@ public class IMButtonAdapter extends RecyclerView.Adapter<IMButtonAdapter.IMBVie
             }
         });*/
 
+    }
+    public void onClick(View v) {
+        PaginaInicialIMButton IMB = null;
+        for(PaginaInicialIMButton obj:IMButtonList){
+            if(obj.titulo.equals(v.getTag())){
+                IMB = obj;
+            }
+        }
+        try {
+            if(IMB != null){
+                Intent intent = new Intent(v.getContext(), IMB.intent);
+                intent.putExtra("tag", IMB.titulo);
+                Log.d("buttonadapter", "enviei " +  IMB.titulo);
+                v.getContext().startActivity(intent);
+            }    else {
+                Toast.makeText(v.getContext(),"Não foi possível carregar Categoria", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(v.getContext(),"Não foi possível carregar Categoria", Toast.LENGTH_LONG).show();
+            Log.e("erroIMButtonAdapteer", e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @Override

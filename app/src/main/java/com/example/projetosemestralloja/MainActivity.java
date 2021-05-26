@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.example.projetosemestralloja.adapter.IMButtonAdapter;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void addOnIMBList(int imagem, String titulo, Class intent){
-        PaginaInicialIMButton imb = new PaginaInicialIMButton(imagem, intent, titulo);
+        PaginaInicialIMButton imb = new PaginaInicialIMButton(imagem, intent, titulo, this);
         IMButtonList.add(imb);
     }
 
