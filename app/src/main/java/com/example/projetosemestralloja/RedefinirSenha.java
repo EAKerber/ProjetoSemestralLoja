@@ -7,6 +7,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,7 +29,7 @@ public class RedefinirSenha extends AppCompatActivity {
     private EditText emailText;
     private EditText novaSenhaText;
     private Button redefinirSenhaButton;
-    private Button voltarButton;
+    private ImageView voltarButton;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -50,7 +51,7 @@ public class RedefinirSenha extends AppCompatActivity {
         emailText = (EditText)findViewById(R.id.Email);
         novaSenhaText = (EditText)findViewById(R.id.senha);
         redefinirSenhaButton = (Button)findViewById(R.id.RedefinirSenha);
-        voltarButton = (Button)findViewById(R.id.Voltar);
+        voltarButton = (ImageView)findViewById(R.id.Voltar);
         inicializarBanco();
 
         eventoDatabase();

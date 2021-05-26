@@ -315,6 +315,7 @@
                 android:text="Criar Conta"
                 android:textColor="#100E0E"
                 android:textSize="18sp"
+                android:background="@android:drawable/dialog_holo_light_frame"
                 app:backgroundTint="#EFE8E8"/>//BtnCriarConta
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -329,7 +330,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/retangulo_background_tela_cadastrov4" />
+                    app:srcCompat="@drawable/retangulo_rodape_tela_cadastro_altsenha" />
             </androidx.constraintlayout.widget.ConstraintLayout>
             //Rodape
 
