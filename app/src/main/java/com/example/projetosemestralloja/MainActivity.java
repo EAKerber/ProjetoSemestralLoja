@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.projetosemestralloja.adapter.IMButtonAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 

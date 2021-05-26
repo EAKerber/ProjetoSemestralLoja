@@ -1,4 +1,4 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnhoAdapter.ViewHolder> {
+import com.example.projetosemestralloja.Produto;
+import com.example.projetosemestralloja.R;
+
+public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnhoAdapter.ItensViewHolder> {
 
     private Produto[] produtos;
     private int layout;
@@ -20,13 +23,13 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
 
     @NonNull
     @Override
-    public  ItensDoCarinnhoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ItensViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(this.layout, parent, false);
-        return new ViewHolder(v);
+        return new ItensViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItensDoCarinnhoAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ItensViewHolder holder, int position) {
 
         Produto itemDoCarrinho = (Produto) this.produtos[position];
 
@@ -45,10 +48,10 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
         return this.produtos.length;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ItensViewHolder extends RecyclerView.ViewHolder {
         public View view;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ItensViewHolder(@NonNull View itemView) {
             super(itemView);
             this.view = itemView;
         }

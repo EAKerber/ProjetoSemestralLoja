@@ -1,20 +1,17 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.adapter;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projetosemestralloja.PaginaInicialIMButton;
+import com.example.projetosemestralloja.databinding.ButtonlayoutBinding;
 
 import java.util.List;
 
-public class IMButtonAdapter extends RecyclerView.Adapter<IMButtonAdapter.ViewHolder>{
+public class IMButtonAdapter extends RecyclerView.Adapter<IMButtonAdapter.IMBViewHolder>{
 
     private List<PaginaInicialIMButton> IMButtonList;
     private  int layout;
@@ -26,16 +23,17 @@ public class IMButtonAdapter extends RecyclerView.Adapter<IMButtonAdapter.ViewHo
 
     @NonNull
     @Override
-    public IMButtonAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(this.layout, parent, false);
-        return new ViewHolder(v);
+    public IMBViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ButtonlayoutBinding v = ButtonlayoutBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new IMBViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull IMButtonAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull IMBViewHolder holder, int position) {
 
         PaginaInicialIMButton IMB = (PaginaInicialIMButton)this.IMButtonList.get(position);
-
+        holder.view.setIMButton(IMB);
+        /*
         TextView tv = holder.view.findViewById(R.id.textViewPlaceHolder);
         tv.setText(IMB.getTitulo());
         ImageView im = holder.view.findViewById(R.id.imageViewPlaceHolder);
@@ -52,7 +50,7 @@ public class IMButtonAdapter extends RecyclerView.Adapter<IMButtonAdapter.ViewHo
                 intent.putExtra("tag", IMB.getTitulo());
                 holder.view.getContext().startActivity(intent);
             }
-        });
+        });*/
 
     }
 
@@ -61,10 +59,10 @@ public class IMButtonAdapter extends RecyclerView.Adapter<IMButtonAdapter.ViewHo
         return this.IMButtonList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public View view;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+    public class IMBViewHolder extends RecyclerView.ViewHolder {
+        public ButtonlayoutBinding view;
+        public IMBViewHolder(@NonNull ButtonlayoutBinding itemView) {
+            super(itemView.getRoot());
             this.view = itemView;
         }
     }
