@@ -3,6 +3,7 @@ package com.example.projetosemestralloja;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,33 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
         tv.setText(itemDoCarrinho.produto.title);
         tv = holder.view.findViewById(R.id.precounitario);
         tv.setText(itemDoCarrinho.produto.valor);
+        tv = holder.view.findViewById(R.id.qtde);
+        tv.setText(itemDoCarrinho.qteselecionada+"");
+        Button buttonPlus = holder.view.findViewById(R.id.buttonsoma);
+        Button buttonSub = holder.view.findViewById(R.id.buttonsubtrai);
+
+        buttonPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemDoCarrinho.qteselecionada = itemDoCarrinho.qteselecionada + 1;
+                TextView tv = holder.view.findViewById(R.id.qtde);
+                tv.setText(itemDoCarrinho.qteselecionada+"");
+            }
+        });
+
+        buttonSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(itemDoCarrinho.qteselecionada > 0) {
+                    itemDoCarrinho.qteselecionada = itemDoCarrinho.qteselecionada - 1;
+                    TextView tv = holder.view.findViewById(R.id.qtde);
+                    tv.setText(itemDoCarrinho.qteselecionada + "");
+                }else{
+                    paginaCarrinho pgCarrinho = new paginaCarrinho();
+                    pgCarrinho.removeoflist(itemDoCarrinhoList,itemDoCarrinho);
+                }
+            }
+        });
 
         // ImageLoader iml = new ImageLoader();
         // iml.loadImg(Produto.getUrl(), holder.view.findViewById(R.id.produto_IM));

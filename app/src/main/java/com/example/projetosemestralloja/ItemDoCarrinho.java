@@ -4,14 +4,14 @@ public class ItemDoCarrinho {
 
     public long id;
     public Produto produto;
-    public double qteselecionada;
+    public int qteselecionada;
     public double precototal;
 
 
-    public ItemDoCarrinho(long id, Produto produto, int qteselecionada) {
+    public ItemDoCarrinho(long id, Produto produto) {
         this.id = id;
         this.produto = produto;
-        this.qteselecionada = qteselecionada;
+        this.qteselecionada = 1;
         this.precototal = (10 * qteselecionada);
     }
 

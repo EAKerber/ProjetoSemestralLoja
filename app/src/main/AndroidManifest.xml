@@ -11,25 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetoSemestralLoja">
-        android:name="com.example.projetosemestralloja.MyFirebaseApp"
-        <activity android:name=".RedefinirSenha"></activity>
+        <activity android:name=".paginaCarrinho"/>
+        <activity android:name=".RedefinirSenha" />
         <activity android:name=".CriarConta" />
-
-        <activity android:name=".ProdutoRecycler"></activity>
-        <activity android:name=".SplashScreen">
+        <activity android:name=".ProdutoRecycler" />
+        <activity android:name=".SplashScreen"/>
+        <activity android:name=".LoginScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".LoginScreen" />
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".RedefinirSenha"/>
-        <activity android:name=".CriarConta"/>
-
-
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
