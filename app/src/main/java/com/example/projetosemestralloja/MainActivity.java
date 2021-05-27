@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         addOnIMBList(R.drawable.button_place_holder, "titulo14", SplashScreen.class);
         addOnIMBList(R.drawable.button_place_holder, "titulo15", SplashScreen.class);
         addOnIMBList(R.drawable.button_place_holder, "titulo16", SplashScreen.class);
-        addOnIMBList(R.drawable.button_place_holder, "titulo17", SplashScreen.class);
+        addOnIMBList(R.drawable.button_place_holder, "titulo17", CarrinhoPgInicial.class);
     }
 
 }

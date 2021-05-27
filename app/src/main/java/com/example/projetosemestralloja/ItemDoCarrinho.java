@@ -3,17 +3,16 @@ package com.example.projetosemestralloja;
 public class ItemDoCarrinho {
 
     public long id;
-    public String nome;
-    public int qteselecionada;
-    public double precoprd;
-    public int precoitem;
+    public Produto produto;
+    public double qteselecionada;
+    public double precototal;
 
-    public ItemDoCarrinho(long id, String nome, int qteselecionada, int precoprd, int precoitem) {
+
+    public ItemDoCarrinho(long id, Produto produto, int qteselecionada) {
         this.id = id;
-        this.nome = nome;
+        this.produto = produto;
         this.qteselecionada = qteselecionada;
-        this.precoprd = precoprd;
-        this.precoitem = precoitem;
+        this.precototal = (10 * qteselecionada);
     }
 
     public long getId() {
@@ -24,15 +23,15 @@ public class ItemDoCarrinho {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
-    public int getQteselecionada() {
+    public double getQteselecionada() {
         return qteselecionada;
     }
 
@@ -40,19 +39,13 @@ public class ItemDoCarrinho {
         this.qteselecionada = qteselecionada;
     }
 
-    public double getPrecoprd() {
-        return precoprd;
+    public double getPrecototal() {
+        return precototal;
     }
 
-    public void setPrecoprd(int precoprd) {
-        this.precoprd = precoprd;
-    }
-
-    public double getPrecoitem() {
-        return precoitem;
-    }
-
-    public void setPrecoitem(int precoitem) {
-        this.precoitem = precoitem;
+    public void setPrecototal(int precototal) {
+        this.precototal = precototal;
     }
 }
+
+

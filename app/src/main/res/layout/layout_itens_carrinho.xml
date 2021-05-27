@@ -1,61 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <TextView
-            android:id="@+id/nomeproduto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nome Produto" />
-
-        <TextView
-            android:id="@+id/tvVlrtotal"
-            android:layout_width="match_parent"
-            android:layout_height="136dp"
-            android:layout_weight="1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Valor Total R$:" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="529dp"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/valor"
+            <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="R$" />
+                android:layout_weight="1"
+                app:srcCompat="@drawable/button_place_holder" />
 
-            <TextView
-                android:id="@+id/tvPrecoProduto"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
+
+                <TextView
+                    android:id="@+id/nomeprod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nome Produto" />
+
+                <TextView
+                    android:id="@+id/precounitario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Preço Unitário" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonsoma"
+                android:layout_width="43dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="+" />
 
             <TextView
+                android:id="@+id/qtde"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Qte" />
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:text="Qtde" />
 
-            <TextView
-                android:id="@+id/tvQteProduto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-
+            <Button
+                android:id="@+id/buttonsubtrai"
+                android:layout_width="43dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="-" />
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHolder>{
+public class    ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHolder>{
 
     private List<Produto> ProdutoList;
     private  int layout;

@@ -8,13 +8,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnhoAdapter.ViewHolder> {
 
-    private Produto[] produtos;
+    private List<ItemDoCarrinho> itemDoCarrinhoList;
     private int layout;
 
-    public ItensDoCarinnhoAdapter(Produto[] produtos, int layout) {
-        this.produtos = produtos;
+    public ItensDoCarinnhoAdapter(List<ItemDoCarrinho> itemDoCarrinhoList, int layout) {
+        this.itemDoCarrinhoList = itemDoCarrinhoList;
         this.layout = layout;
     }
 
@@ -28,12 +30,12 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
     @Override
     public void onBindViewHolder(@NonNull ItensDoCarinnhoAdapter.ViewHolder holder, int position) {
 
-        Produto itemDoCarrinho = (Produto) this.produtos[position];
+        ItemDoCarrinho itemDoCarrinho = (ItemDoCarrinho) this.itemDoCarrinhoList.get(position);
 
-        TextView tv = holder.view.findViewById(R.id.nomeproduto);
-        tv.setText(itemDoCarrinho.title);
-        tv = holder.view.findViewById(R.id.tvPrecoProduto);
-        tv.setText(itemDoCarrinho.valor);
+        TextView tv = holder.view.findViewById(R.id.nomeprod);
+        tv.setText(itemDoCarrinho.produto.title);
+        tv = holder.view.findViewById(R.id.precounitario);
+        tv.setText(itemDoCarrinho.produto.valor);
 
         // ImageLoader iml = new ImageLoader();
         // iml.loadImg(Produto.getUrl(), holder.view.findViewById(R.id.produto_IM));
@@ -42,7 +44,7 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
 
     @Override
     public int getItemCount() {
-        return this.produtos.length;
+        return this.itemDoCarrinhoList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
