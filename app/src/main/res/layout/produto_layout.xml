@@ -1,50 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:paddingBottom="20dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingEnd="10dp"
-        app:cardBackgroundColor="@color/cor2">
+    <data>
+        <variable
+            name="produto"
+            type="com.example.projetosemestralloja.Produto" />
 
-        <LinearLayout
+        <variable
+            name="adapterProduto"
+            type="com.example.projetosemestralloja.adapter.ProdutoAdapter" />
+    </data>
+
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/produto_IM"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
-                app:srcCompat="@drawable/button_place_holder" />
+            android:layout_height="match_parent"
+            android:paddingEnd="10dp"
+            app:cardBackgroundColor="@color/cor2">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tituloProduto"
+                <ImageView
+                    android:id="@+id/produto_IM"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_vertical"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:tag="@{produto.url}"
+                    app:imageUrl="@{produto.url}"
+                    app:srcCompat="@drawable/button_place_holder"
+                    />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/descricaoProduto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/tituloProduto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{produto.title}"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/descricaoProduto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{produto.descricao}"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

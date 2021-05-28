@@ -7,7 +7,7 @@
                 type="com.example.projetosemestralloja.PaginaInicialIMButton" />
 
             <variable
-                name="adapter"
+                name="adapterIMButton"
                 type="com.example.projetosemestralloja.adapter.IMButtonAdapter" />
         </data>
 
@@ -21,7 +21,7 @@
                 android:tag="@{IMButton.titulo}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{(view) -> adapter.onClick(view)}">
+                android:onClick="@{(view) -> adapterIMButton.onClick(view)}">
 
                 <LinearLayout
                     android:layout_width="match_parent"

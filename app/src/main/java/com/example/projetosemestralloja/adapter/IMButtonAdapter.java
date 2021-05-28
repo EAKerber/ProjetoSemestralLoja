@@ -38,7 +38,7 @@ public class IMButtonAdapter extends RecyclerView.Adapter<IMButtonAdapter.IMBVie
 
         PaginaInicialIMButton IMB = (PaginaInicialIMButton)this.IMButtonList.get(position);
         holder.view.setIMButton(IMB);
-        holder.view.setAdapter(this);
+        holder.view.setAdapterIMButton(this);
         /*
         TextView tv = holder.view.findViewById(R.id.textViewPlaceHolder);
         tv.setText(IMB.getTitulo());

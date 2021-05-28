@@ -1,24 +1,24 @@
 package com.example.projetosemestralloja.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.example.projetosemestralloja.ImageLoader;
 import com.example.projetosemestralloja.Produto;
-import com.example.projetosemestralloja.R;
+import com.example.projetosemestralloja.databinding.ProdutoLayoutBinding;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>{
 
     private List<Produto> ProdutoList;
-    private  int layout;
+    private int layout;
+
 
     public ProdutoAdapter(List<Produto> Produtos, int layout){
         this.ProdutoList = Produtos;
@@ -28,7 +28,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoV
     @NonNull
     @Override
     public ProdutoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(this.layout, parent, false);
+        ProdutoLayoutBinding v = ProdutoLayoutBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new ProdutoViewHolder(v);
     }
 
@@ -36,15 +36,23 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoV
     public void onBindViewHolder(@NonNull ProdutoViewHolder holder, int position) {
 
         Produto produto = (Produto)this.ProdutoList.get(position);
+        holder.view.setProduto(produto);
+        holder.view.setAdapterProduto(this);
 
+        /*
         TextView tv = holder.view.findViewById(R.id.tituloProduto);
         tv.setText(produto.getTitle());
         tv = holder.view.findViewById(R.id.descricaoProduto);
         tv.setText(produto.getDescricao());
-
         ImageLoader iml = new ImageLoader();
-        iml.loadImg(produto.getUrl(), holder.view.findViewById(R.id.produto_IM));
+        iml.loadImg(produto.getUrl(), holder.view.);
+        */
 
+    }
+
+    @BindingAdapter({"imageUrl"})
+    public static void loadImage(ImageView view, String url) {
+        Picasso.get().load(url).into(view);
     }
 
     @Override
@@ -53,9 +61,9 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoV
     }
 
     public class ProdutoViewHolder extends RecyclerView.ViewHolder {
-        public View view;
-        public ProdutoViewHolder(@NonNull View itemView) {
-            super(itemView);
+        public ProdutoLayoutBinding view;
+        public ProdutoViewHolder(@NonNull ProdutoLayoutBinding itemView) {
+            super(itemView.getRoot());
             this.view = itemView;
         }
     }

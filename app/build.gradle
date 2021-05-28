@@ -6,8 +6,8 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
-    dataBinding {
-        enabled true
+    buildFeatures{
+        dataBinding = true
     }
 
     defaultConfig {
@@ -61,4 +61,6 @@ dependencies {
 
     //Biblioteca para mascara nos campos, CPF,Celular etc..
     implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
