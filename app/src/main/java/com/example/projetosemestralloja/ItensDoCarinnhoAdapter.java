@@ -54,13 +54,16 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
         buttonSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(itemDoCarrinho.qteselecionada > 0) {
+                if(itemDoCarrinho.qteselecionada > 1) {
                     itemDoCarrinho.qteselecionada = itemDoCarrinho.qteselecionada - 1;
-                    TextView tv = holder.view.findViewById(R.id.qtde);
-                    tv.setText(itemDoCarrinho.qteselecionada + "");
+                    notifyItemChanged((int)itemDoCarrinho.getId()-1);
                 }else{
-                    paginaCarrinho pgCarrinho = new paginaCarrinho();
-                    pgCarrinho.removeoflist(itemDoCarrinhoList,itemDoCarrinho);
+                    /*paginaCarrinho pgCarrinho = new paginaCarrinho();
+                    pgCarrinho.removeoflist(itemDoCarrinhoList,itemDoCarrinho);*/
+                    itemDoCarrinhoList.remove(itemDoCarrinho);
+                    notifyItemRemoved((int) itemDoCarrinho.getId()-1);
+                    notifyItemRangeChanged((int) itemDoCarrinho.getId()-1, itemDoCarrinhoList.size());
+                    notifyDataSetChanged();
                 }
             }
         });
