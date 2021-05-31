@@ -12,18 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetoSemestralLoja">
         <activity android:name=".paginaCarrinho"/>
-        <activity android:name=".RedefinirSenha" />
-        <activity android:name=".CriarConta" />
-        <activity android:name=".ProdutoRecycler" />
-        <activity android:name=".SplashScreen"/>
-        <activity android:name=".LoginScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
