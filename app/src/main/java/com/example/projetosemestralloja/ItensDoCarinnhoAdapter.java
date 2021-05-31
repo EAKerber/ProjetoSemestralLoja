@@ -46,8 +46,8 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
             @Override
             public void onClick(View v) {
                 itemDoCarrinho.qteselecionada = itemDoCarrinho.qteselecionada + 1;
-                TextView tv = holder.view.findViewById(R.id.qtde);
-                tv.setText(itemDoCarrinho.qteselecionada+"");
+                notifyItemChanged(position);
+                notifyDataSetChanged();
             }
         });
 
@@ -56,13 +56,14 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
             public void onClick(View v) {
                 if(itemDoCarrinho.qteselecionada > 1) {
                     itemDoCarrinho.qteselecionada = itemDoCarrinho.qteselecionada - 1;
-                    notifyItemChanged((int)itemDoCarrinho.getId()-1);
+                    notifyItemChanged(position);
+                    notifyDataSetChanged();
                 }else{
                     /*paginaCarrinho pgCarrinho = new paginaCarrinho();
                     pgCarrinho.removeoflist(itemDoCarrinhoList,itemDoCarrinho);*/
                     itemDoCarrinhoList.remove(itemDoCarrinho);
-                    notifyItemRemoved((int) itemDoCarrinho.getId()-1);
-                    notifyItemRangeChanged((int) itemDoCarrinho.getId()-1, itemDoCarrinhoList.size());
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, itemDoCarrinhoList.size());
                     notifyDataSetChanged();
                 }
             }
