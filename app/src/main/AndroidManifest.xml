@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetoSemestralLoja">
-        <activity android:name=".paginaCarrinho"/>
+        <activity android:name=".PaginaCarrinho"/>
     </application>
 
 </manifest>

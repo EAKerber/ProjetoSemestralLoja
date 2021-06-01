@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class paginaCarrinho extends AppCompatActivity {
+public class PaginaCarrinho extends AppCompatActivity {
 
     static List<ItemDoCarrinho> produtos = new ArrayList<>();
     static boolean jaadicionado = false;
