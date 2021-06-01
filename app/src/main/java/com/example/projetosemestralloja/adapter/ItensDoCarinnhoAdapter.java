@@ -3,40 +3,74 @@ package com.example.projetosemestralloja.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projetosemestralloja.Produto;
+import com.example.projetosemestralloja.ItemDoCarrinho;
 import com.example.projetosemestralloja.R;
 
-public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnhoAdapter.ItensViewHolder> {
+import java.util.List;
 
-    private Produto[] produtos;
+public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnhoAdapter.ViewHolder> {
+
+    private List<ItemDoCarrinho> itemDoCarrinhoList;
     private int layout;
 
-    public ItensDoCarinnhoAdapter(Produto[] produtos, int layout) {
-        this.produtos = produtos;
+    public ItensDoCarinnhoAdapter(List<ItemDoCarrinho> itemDoCarrinhoList, int layout) {
+        this.itemDoCarrinhoList = itemDoCarrinhoList;
         this.layout = layout;
     }
 
     @NonNull
     @Override
-    public ItensViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public  ItensDoCarinnhoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(this.layout, parent, false);
-        return new ItensViewHolder(v);
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItensViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ItensDoCarinnhoAdapter.ViewHolder holder, int position) {
 
-        Produto itemDoCarrinho = (Produto) this.produtos[position];
+        ItemDoCarrinho itemDoCarrinho = (ItemDoCarrinho) this.itemDoCarrinhoList.get(position);
 
-        TextView tv = holder.view.findViewById(R.id.nomeproduto);
-        tv.setText(itemDoCarrinho.title);
-        tv = holder.view.findViewById(R.id.tvPrecoProduto);
-        tv.setText(itemDoCarrinho.valor);
+        TextView tv = holder.view.findViewById(R.id.nomeprod);
+        tv.setText(itemDoCarrinho.produto.title);
+        tv = holder.view.findViewById(R.id.precounitario);
+        tv.setText(itemDoCarrinho.produto.valor);
+        tv = holder.view.findViewById(R.id.qtde);
+        tv.setText(itemDoCarrinho.qteselecionada+"");
+        Button buttonPlus = holder.view.findViewById(R.id.buttonsoma);
+        Button buttonSub = holder.view.findViewById(R.id.buttonsubtrai);
+
+        buttonPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemDoCarrinho.qteselecionada = itemDoCarrinho.qteselecionada + 1;
+                notifyItemChanged(position);
+                notifyDataSetChanged();
+            }
+        });
+
+        buttonSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(itemDoCarrinho.qteselecionada > 1) {
+                    itemDoCarrinho.qteselecionada = itemDoCarrinho.qteselecionada - 1;
+                    notifyItemChanged(position);
+                    notifyDataSetChanged();
+                }else{
+                    /*paginaCarrinho pgCarrinho = new paginaCarrinho();
+                    pgCarrinho.removeoflist(itemDoCarrinhoList,itemDoCarrinho);*/
+                    itemDoCarrinhoList.remove(itemDoCarrinho);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, itemDoCarrinhoList.size());
+                    notifyDataSetChanged();
+                }
+            }
+        });
 
         // ImageLoader iml = new ImageLoader();
         // iml.loadImg(Produto.getUrl(), holder.view.findViewById(R.id.produto_IM));
@@ -45,13 +79,13 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
 
     @Override
     public int getItemCount() {
-        return this.produtos.length;
+        return this.itemDoCarrinhoList.size();
     }
 
-    public class ItensViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public View view;
 
-        public ItensViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.view = itemView;
         }

@@ -76,6 +76,7 @@ public class MainActivity2 extends AppCompatActivity {
         addOnIMBList(R.drawable.jaqueta, "Jaqueta", ProdutoRecycler.class);
         addOnIMBList(R.drawable.bermuda, "Bermuda", ProdutoRecycler.class);
         addOnIMBList(R.drawable.camisa, "Camisa", ProdutoRecycler.class);
+        addOnIMBList(R.drawable.button_place_holder, "Carrinho (WIP)", PaginaCarrinho.class);
 
     }
 

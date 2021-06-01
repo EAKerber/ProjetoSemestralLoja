@@ -5,16 +5,15 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyFirebaseApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ProjetoSemestralLoja"
-        android:name="com.example.projetosemestralloja.MyFirebaseApp">
-
-        <activity android:name=".ProdutoRecycler"/>
-
+        android:theme="@style/Theme.ProjetoSemestralLoja">
+        <activity android:name=".PaginaCarrinho"></activity>
+        <activity android:name=".ProdutoRecycler" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +26,9 @@
         <activity
             android:name=".MainActivity2"
             android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar"/>
-        <activity android:name=".RedefinirSenha"/>
-        <activity android:name=".CriarConta"/>
+            android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar" />
+        <activity android:name=".RedefinirSenha" />
+        <activity android:name=".CriarConta" />
     </application>
 
 </manifest>
