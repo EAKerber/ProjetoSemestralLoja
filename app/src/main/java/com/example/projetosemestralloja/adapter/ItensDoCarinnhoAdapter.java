@@ -1,4 +1,4 @@
-package com.example.projetosemestralloja.adapter.;
+package com.example.projetosemestralloja.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
