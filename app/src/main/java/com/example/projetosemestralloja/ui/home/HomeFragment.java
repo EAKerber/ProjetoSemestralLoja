@@ -1,5 +1,6 @@
 package com.example.projetosemestralloja.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.projetosemestralloja.MainActivity2;
 import com.example.projetosemestralloja.R;
 
 public class HomeFragment extends Fragment {
@@ -28,6 +30,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
+                if(!s.toLowerCase().equals("home"))
+                    startActivity(new Intent(getContext(), MainActivity2.class));
             }
         });
         return root;
