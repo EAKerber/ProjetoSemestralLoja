@@ -1,5 +1,6 @@
 package com.example.projetosemestralloja;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -14,25 +15,25 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projetosemestralloja.adapter.IMButtonAdapter;
+import com.example.projetosemestralloja.presenter.MainActivityPresenter;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity2 extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity implements MainActivityContrato.View{
+
+    private MainActivityContrato.presenter presenter;
 
     private AppBarConfiguration mAppBarConfiguration;
 
-
-    List<PaginaInicialIMButton> IMButtonList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        presenter = new MainActivityPresenter(this);
         setContentView(R.layout.activity_main2);
-        createIMBList();
-        createButtons();
+        presenter.createIMBList();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -50,13 +51,13 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
 
-
-    public void addOnIMBList(int imagem, String titulo, Class intent){
-        PaginaInicialIMButton imb = new PaginaInicialIMButton(imagem, intent, titulo, this);
-        IMButtonList.add(imb);
+    @Override
+    public Context getContexto(){
+        return this;
     }
 
-    public void createButtons(){
+
+    public void createButtons(List<PaginaInicialIMButton> IMButtonList){
         RecyclerView rvIMB = findViewById(R.id.IMB_Recycler);
 
         LinearLayoutManager llhm = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
@@ -65,21 +66,6 @@ public class MainActivity2 extends AppCompatActivity {
         };
         rvIMB.setAdapter(adapter);
     }
-
-    public void createIMBList(){
-
-        addOnIMBList(R.drawable.masculino, "Masculino", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.feminino, "Feminino", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.infantil, "Infantil", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.calca, "Calças", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.pijama, "Pijama", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.jaqueta, "Jaqueta", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.bermuda, "Bermuda", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.camisa, "Camisa", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.button_place_holder, "Carrinho (WIP)", PaginaCarrinho.class);
-
-    }
-
 
 
     @Override

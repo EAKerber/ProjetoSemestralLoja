@@ -12,7 +12,7 @@ public class ItemDoCarrinho {
         this.id = id;
         this.produto = produto;
         this.qteselecionada = 1;
-        this.precototal = (10 * qteselecionada);
+        this.precototal = (5 * qteselecionada);
     }
 
     public long getId() {
@@ -40,12 +40,13 @@ public class ItemDoCarrinho {
     }
 
     public double getPrecototal() {
-        return precototal;
+        return 5*qteselecionada;
     }
 
     public void setPrecototal(int precototal) {
         this.precototal = precototal;
     }
+
 }
 
 

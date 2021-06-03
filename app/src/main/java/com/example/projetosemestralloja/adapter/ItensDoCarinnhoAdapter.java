@@ -39,7 +39,7 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
         TextView tv = holder.view.findViewById(R.id.nomeprod);
         tv.setText(itemDoCarrinho.produto.title);
         tv = holder.view.findViewById(R.id.precounitario);
-        tv.setText(itemDoCarrinho.produto.valor);
+        tv.setText("R$ "+ itemDoCarrinho.getPrecototal()+"");
         tv = holder.view.findViewById(R.id.qtde);
         tv.setText(itemDoCarrinho.qteselecionada+"");
         Button buttonPlus = holder.view.findViewById(R.id.buttonsoma);
