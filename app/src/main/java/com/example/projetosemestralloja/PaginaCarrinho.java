@@ -1,7 +1,6 @@
 package com.example.projetosemestralloja;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,10 +24,6 @@ public class PaginaCarrinho extends AppCompatActivity {
 
         addAllOnList();
 
-
-        Log.d("testCarrinho","02");
-        //criarlista();
-        Log.d("testCarrinho","03");
         RecyclerView rvProduto = findViewById(R.id.recyclercarrinho);
 
         LinearLayoutManager llhm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -40,7 +35,7 @@ public class PaginaCarrinho extends AppCompatActivity {
     public void addAllOnList(){
         if(!jaadicionado){
             //Array só para teste. Validar lista q não está funcionando
-            Produto calca = new Produto(01, "calça jean", "calça", null, "10", null);
+            Produto calca = new Produto(01, "calça jean", "calça", null, "10", "https://images-ext-2.discordapp.net/external/yFG6nihLOVq8TW3lmQtO4beyydOC-EXw7odwQsSomGE/https/static.dafiti.com.br/p/LEVOK-Cal%25C3%25A7a-Masculina-Jeans-Lavado-1085-7956-5604006-1-zoom.jpg?width=326&height=472");
 
 
             ItemDoCarrinho item1 = new ItemDoCarrinho(01, calca);

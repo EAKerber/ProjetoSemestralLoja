@@ -30,7 +30,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onChanged(@Nullable String s) {
                 //textView.setText(s);
-                startActivity(new Intent(getContext(), LoginScreen.class) );
+                startActivity(new Intent(getContext(), LoginScreen.class));
             }
         });
         return root;

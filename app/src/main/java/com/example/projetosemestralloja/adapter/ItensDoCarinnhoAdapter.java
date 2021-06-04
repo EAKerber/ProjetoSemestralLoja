@@ -1,20 +1,20 @@
 package com.example.projetosemestralloja.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projetosemestralloja.ItemDoCarrinho;
-import com.example.projetosemestralloja.R;
+import com.example.projetosemestralloja.databinding.LayoutItensCarrinhoBinding;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnhoAdapter.ViewHolder> {
+public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnhoAdapter.ItemCarrinhoViewHolder> {
 
     private List<ItemDoCarrinho> itemDoCarrinhoList;
     private int layout;
@@ -26,17 +26,19 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
 
     @NonNull
     @Override
-    public  ItensDoCarinnhoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(this.layout, parent, false);
-        return new ViewHolder(v);
+    public ItemCarrinhoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutItensCarrinhoBinding v = LayoutItensCarrinhoBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new ItemCarrinhoViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItensDoCarinnhoAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ItemCarrinhoViewHolder holder, int position) {
 
         ItemDoCarrinho itemDoCarrinho = (ItemDoCarrinho) this.itemDoCarrinhoList.get(position);
+        holder.view.setItemCarrinho(itemDoCarrinho);
+        holder.view.setAdapterItemCarrinho(this);
 
-        TextView tv = holder.view.findViewById(R.id.nomeprod);
+        /*TextView tv = holder.view.findViewById(R.id.nomeprod);
         tv.setText(itemDoCarrinho.produto.title);
         tv = holder.view.findViewById(R.id.precounitario);
         tv.setText("R$ "+ itemDoCarrinho.getPrecototal()+"");
@@ -62,19 +64,18 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
                     notifyItemChanged(position);
                     notifyDataSetChanged();
                 }else{
-                    /*paginaCarrinho pgCarrinho = new paginaCarrinho();
-                    pgCarrinho.removeoflist(itemDoCarrinhoList,itemDoCarrinho);*/
                     itemDoCarrinhoList.remove(itemDoCarrinho);
                     notifyItemRemoved(position);
                     notifyItemRangeChanged(position, itemDoCarrinhoList.size());
                     notifyDataSetChanged();
                 }
             }
-        });
+        });*/
+    }
 
-        // ImageLoader iml = new ImageLoader();
-        // iml.loadImg(Produto.getUrl(), holder.view.findViewById(R.id.produto_IM));
-
+    @BindingAdapter({"imageItemUrl"})
+    public static void loadImage(ImageView view, String url) {
+        Picasso.get().load(url).into(view);
     }
 
     @Override
@@ -82,11 +83,11 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
         return this.itemDoCarrinhoList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public View view;
+    public class ItemCarrinhoViewHolder extends RecyclerView.ViewHolder {
+        public LayoutItensCarrinhoBinding view;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+        public ItemCarrinhoViewHolder(@NonNull LayoutItensCarrinhoBinding itemView) {
+            super(itemView.getRoot());
             this.view = itemView;
         }
 

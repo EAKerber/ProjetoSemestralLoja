@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetoSemestralLoja">
-        <activity android:name=".PaginaCarrinho"></activity>
+        <activity android:name=".DetalheProduto"></activity>
+        <activity android:name=".PaginaCarrinho" />
         <activity android:name=".ProdutoRecycler" />
         <activity android:name=".SplashScreen">
             <intent-filter>
