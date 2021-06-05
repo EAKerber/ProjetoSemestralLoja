@@ -1,8 +1,11 @@
 package com.example.projetosemestralloja.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
@@ -76,6 +79,57 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
     @BindingAdapter({"imageItemUrl"})
     public static void loadImage(ImageView view, String url) {
         Picasso.get().load(url).into(view);
+    }
+
+    public void addOnClick(View v){
+        ItemDoCarrinho itemDoCarrinho = null;
+        for(ItemDoCarrinho obj:itemDoCarrinhoList){
+            if((obj.id + "").equals(v.getTag() + "")){
+                itemDoCarrinho = obj;
+            }
+        }
+        try {
+            if(itemDoCarrinho != null){
+                itemDoCarrinho.qteselecionada = itemDoCarrinho.qteselecionada + 1;
+                notifyItemChanged(itemDoCarrinhoList.indexOf(itemDoCarrinho));
+                notifyDataSetChanged();
+            }    else {
+                Toast.makeText(v.getContext(),"Não foi possível adiconar 01", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(v.getContext(),"Não foi possível adiconar 02", Toast.LENGTH_LONG).show();
+            Log.e("erroCarrinhoAdapteer", e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void subOnClick(View v){
+        ItemDoCarrinho itemDoCarrinho = null;
+        for(ItemDoCarrinho obj:itemDoCarrinhoList){
+            if((obj.id + "").equals(v.getTag() + "")){
+                itemDoCarrinho = obj;
+            }
+        }
+        try {
+            if(itemDoCarrinho != null){
+                if(itemDoCarrinho.qteselecionada > 1) {
+                    itemDoCarrinho.qteselecionada = itemDoCarrinho.qteselecionada - 1;
+                    notifyItemChanged(itemDoCarrinhoList.indexOf(itemDoCarrinho));
+                    notifyDataSetChanged();
+                }else{
+                    itemDoCarrinhoList.remove(itemDoCarrinho);
+                    notifyItemRemoved(itemDoCarrinhoList.indexOf(itemDoCarrinho));
+                    notifyItemRangeChanged(itemDoCarrinhoList.indexOf(itemDoCarrinho), itemDoCarrinhoList.size());
+                    notifyDataSetChanged();
+                }
+            }    else {
+                Toast.makeText(v.getContext(),"Não foi possível remover 01", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(v.getContext(),"Não foi possível remover 02", Toast.LENGTH_LONG).show();
+            Log.e("erroCarrinhoAdapteer", e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @Override
