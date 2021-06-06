@@ -12,6 +12,10 @@
             android:id="@+id/nav_login"
             android:icon="@drawable/login1"
             android:title="@string/login" />
+        <item
+            android:id="@+id/nav_carrinho"
+            android:icon="@drawable/ic_carrinho"
+            android:title="Carrinho" />
 
     </group>
 </menu>

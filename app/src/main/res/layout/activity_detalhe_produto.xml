@@ -31,6 +31,11 @@
             app:srcCompat="@drawable/button_place_holder"
             app:imageUrl2="@{produtoDetalhe.url}"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@{produtoDetalhe.title}"/>
+
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="wrap_content"

@@ -1,8 +1,9 @@
 package com.example.projetosemestralloja;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,7 +12,7 @@ import com.example.projetosemestralloja.adapter.ItensDoCarinnhoAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaginaCarrinho extends AppCompatActivity {
+public class PaginaCarrinho extends MenuDrawerActivity {
 
     static List<ItemDoCarrinho> produtos = new ArrayList<>();
     static boolean jaadicionado = false;
@@ -19,7 +20,9 @@ public class PaginaCarrinho extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pagina_carrinho);
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View v2 = layoutInflater.inflate(R.layout.activity_pagina_carrinho, null, false);
+        drawer.addView(v2, 0);
 
 
         addAllOnList();
