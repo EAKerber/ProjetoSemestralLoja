@@ -31,6 +31,7 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
     @Override
     public ItemCarrinhoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutItensCarrinhoBinding v = LayoutItensCarrinhoBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        //notifyDataSetChanged();
         return new ItemCarrinhoViewHolder(v);
     }
 
@@ -40,6 +41,7 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
         ItemDoCarrinho itemDoCarrinho = (ItemDoCarrinho) this.itemDoCarrinhoList.get(position);
         holder.view.setItemCarrinho(itemDoCarrinho);
         holder.view.setAdapterItemCarrinho(this);
+        //notifyDataSetChanged();
 
         /*TextView tv = holder.view.findViewById(R.id.nomeprod);
         tv.setText(itemDoCarrinho.produto.title);
@@ -119,7 +121,7 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
                 }else{
                     itemDoCarrinhoList.remove(itemDoCarrinho);
                     notifyItemRemoved(itemDoCarrinhoList.indexOf(itemDoCarrinho));
-                    notifyItemRangeChanged(itemDoCarrinhoList.indexOf(itemDoCarrinho), itemDoCarrinhoList.size());
+                    notifyItemRangeChanged(itemDoCarrinhoList.indexOf(itemDoCarrinho), 1);
                     notifyDataSetChanged();
                 }
             }    else {
@@ -142,6 +144,7 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
 
         public ItemCarrinhoViewHolder(@NonNull LayoutItensCarrinhoBinding itemView) {
             super(itemView.getRoot());
+            //notifyDataSetChanged();
             this.view = itemView;
         }
 

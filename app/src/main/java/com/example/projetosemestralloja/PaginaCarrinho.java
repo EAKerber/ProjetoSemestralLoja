@@ -38,16 +38,19 @@ public class PaginaCarrinho extends MenuDrawerActivity {
         int i = 0;
         boolean isInList = false;
         ItemDoCarrinho item = null;
-        if (produtos.size() > 0) {
+        if (!(produtos.isEmpty())) {
             Log.d("carrinhoAddItem", "04");
+
             for (ItemDoCarrinho obj : produtos) {
                 Log.d("carrinhoAddItem", "05");
-                if (obj.produto.equals(produto)) {
+                i++;
+                obj.setId(i);
+                if (obj.produto.id == produto.id) {
                     Log.d("carrinhoAddItem", "01");
                     isInList = true;
                 }
-                i++;
             }
+            i++;
             if(!isInList){
                 Log.d("carrinhoAddItem", "06");
                 item = new ItemDoCarrinho(i, produto);
@@ -58,9 +61,10 @@ public class PaginaCarrinho extends MenuDrawerActivity {
         }
 
         if (item != null){
-            addonlist(produtos, item);
+            produtos.add(item);
             Log.d("carrinhoAddItem", "03");
         }
+        Log.d("carrinhoAddItem", "31");
     }
 
 
