@@ -1,8 +1,8 @@
 package com.example.projetosemestralloja.presenter;
 
-import com.example.projetosemestralloja.MainActivityContrato;
-import com.example.projetosemestralloja.PaginaInicialIMButton;
-import com.example.projetosemestralloja.ProdutoRecycler;
+import com.example.projetosemestralloja.interfaces.MainActivityContrato;
+import com.example.projetosemestralloja.model.PaginaInicialIMButton;
+import com.example.projetosemestralloja.ui.ProdutoRecycler;
 import com.example.projetosemestralloja.R;
 
 import java.util.ArrayList;

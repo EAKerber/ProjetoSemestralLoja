@@ -12,25 +12,25 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetoSemestralLoja">
-        <activity android:name=".MenuDrawerActivity"></activity>
-        <activity android:name=".DetalheProduto" />
+        <activity android:name=".ui.MenuDrawerActivity"/>
+        <activity android:name=".ui.DetalheProduto" />
         <activity
-            android:name=".PaginaCarrinho"
+            android:name=".ui.PaginaCarrinho"
             android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar" />
-        <activity android:name=".ProdutoRecycler" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".ui.ProdutoRecycler" />
+        <activity android:name=".ui.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginScreen" />
+        <activity android:name=".ui.LoginScreen" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".ui.MainActivity2"
             android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar" />
-        <activity android:name=".RedefinirSenha" />
-        <activity android:name=".CriarConta" />
+        <activity android:name=".ui.RedefinirSenha" />
+        <activity android:name=".ui.CriarConta" />
     </application>
 
 </manifest>

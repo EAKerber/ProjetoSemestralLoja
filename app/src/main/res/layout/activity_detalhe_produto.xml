@@ -6,13 +6,13 @@
     <data>
         <variable
             name="produtoDetalhe"
-            type="com.example.projetosemestralloja.Produto" />
+            type="com.example.projetosemestralloja.model.Produto" />
 
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetalheProduto">
+    tools:context=".ui.DetalheProduto">
 
 
     <!-- põe (String) antes para poder dar bind em int, double, etc, ainda tenho que criar metodos

@@ -1,4 +1,4 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.projetosemestralloja.model.Cliente;
+import com.example.projetosemestralloja.MyFirebaseApp;
+import com.example.projetosemestralloja.R;
+import com.example.projetosemestralloja.validacao.ValidaCep;
+import com.example.projetosemestralloja.validacao.ValidaCpf;
+import com.example.projetosemestralloja.validacao.ValidaData;
+import com.example.projetosemestralloja.validacao.ValidaEmail;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.firebase.FirebaseApp;

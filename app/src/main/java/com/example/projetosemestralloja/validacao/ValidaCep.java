@@ -1,4 +1,4 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.validacao;
 
 public class ValidaCep {
     public static boolean isCep(String Cep){

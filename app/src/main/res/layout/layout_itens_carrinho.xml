@@ -7,7 +7,7 @@
 
         <variable
             name="itemCarrinho"
-            type="com.example.projetosemestralloja.ItemDoCarrinho" />
+            type="com.example.projetosemestralloja.model.ItemDoCarrinho" />
 
         <variable
             name="adapterItemCarrinho"

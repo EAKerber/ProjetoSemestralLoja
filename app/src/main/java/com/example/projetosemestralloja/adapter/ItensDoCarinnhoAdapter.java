@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projetosemestralloja.ItemDoCarrinho;
+import com.example.projetosemestralloja.model.ItemDoCarrinho;
 import com.example.projetosemestralloja.databinding.LayoutItensCarrinhoBinding;
 import com.squareup.picasso.Picasso;
 

@@ -1,4 +1,4 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,13 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 
+import com.example.projetosemestralloja.model.Produto;
+import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.databinding.ActivityDetalheProdutoBinding;
 import com.squareup.picasso.Picasso;
 
 public class DetalheProduto extends AppCompatActivity {
 
     public static Produto produtoDetalhe;
-    public  PaginaCarrinho pg = new PaginaCarrinho();
+    public PaginaCarrinho pg = new PaginaCarrinho();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

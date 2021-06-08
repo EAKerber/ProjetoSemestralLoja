@@ -1,4 +1,4 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.model;
 
 public class ItemDoCarrinho {
 

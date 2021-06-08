@@ -1,14 +1,10 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.model;
 
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.json.JSONArray;
-import org.w3c.dom.ls.LSInput;
-
-import java.lang.reflect.Array;
-import java.util.List;
 
 public class Produto implements Parcelable {
     public int id;

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
     android:orientation="vertical"
-    tools:context=".SplashScreen">
+    tools:context=".ui.SplashScreen">
 
     <ImageView
         android:id="@+id/ritter_logo2"
