@@ -1,7 +1,6 @@
 package com.example.projetosemestralloja.presenter;
 
 import com.example.projetosemestralloja.MainActivityContrato;
-import com.example.projetosemestralloja.PaginaCarrinho;
 import com.example.projetosemestralloja.PaginaInicialIMButton;
 import com.example.projetosemestralloja.ProdutoRecycler;
 import com.example.projetosemestralloja.R;
@@ -26,8 +25,6 @@ public class MainActivityPresenter implements MainActivityContrato.presenter {
         addOnIMBList(R.drawable.jaqueta, "Jaqueta", ProdutoRecycler.class);
         addOnIMBList(R.drawable.bermuda, "Bermuda", ProdutoRecycler.class);
         addOnIMBList(R.drawable.camisa, "Camisa", ProdutoRecycler.class);
-        addOnIMBList(R.drawable.button_place_holder, "Carrinho (WIP)", PaginaCarrinho.class);
-
         view.createButtons(IMButtonList);
     }
 

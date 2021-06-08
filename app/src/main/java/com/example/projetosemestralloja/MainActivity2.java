@@ -20,9 +20,11 @@ public class MainActivity2 extends MenuDrawerActivity implements MainActivityCon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setActivityTitle("Home");
+        checkStartingItem();
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View v = layoutInflater.inflate(R.layout.activity_main, null, false);
-        drawer.addView(v, 2);
+        View v2 = layoutInflater.inflate(R.layout.activity_main2, null, false);
+        drawer.addView(v2, 0);
 
         presenter = new MainActivityPresenter(this);
         presenter.createIMBList();

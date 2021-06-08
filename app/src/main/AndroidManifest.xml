@@ -27,11 +27,7 @@
         </activity>
         <activity android:name=".LoginScreen" />
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar" />
-        <activity
             android:name=".MainActivity2"
-            android:label="Home"
             android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar" />
         <activity android:name=".RedefinirSenha" />
         <activity android:name=".CriarConta" />
