@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetoSemestralLoja">
-        <activity android:name=".PaginaCarrinho"></activity>
+        <activity android:name=".MenuDrawerActivity"></activity>
+        <activity android:name=".DetalheProduto" />
+        <activity
+            android:name=".PaginaCarrinho"
+            android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar" />
         <activity android:name=".ProdutoRecycler" />
         <activity android:name=".SplashScreen">
             <intent-filter>
@@ -22,10 +26,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginScreen" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar" />
         <activity
             android:name=".MainActivity2"
-            android:label="@string/title_activity_main2"
+            android:label="Home"
             android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar" />
         <activity android:name=".RedefinirSenha" />
         <activity android:name=".CriarConta" />

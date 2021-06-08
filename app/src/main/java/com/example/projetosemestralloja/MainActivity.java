@@ -1,8 +1,10 @@
 package com.example.projetosemestralloja;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,14 +13,20 @@ import com.example.projetosemestralloja.adapter.IMButtonAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MenuDrawerActivity {
     List<PaginaInicialIMButton> IMButtonList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("mainactivity", "01");
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        Log.d("mainactivity", "02");
+        View v3 = layoutInflater.inflate(R.layout.activity_main, null, false);
+        Log.d("mainactivity", "03");
+        drawer.addView(v3, 3);
+        Log.d("mainactivity", "04");
 
-        setContentView(R.layout.activity_main);
 
         createIMBList();
         createButtons();

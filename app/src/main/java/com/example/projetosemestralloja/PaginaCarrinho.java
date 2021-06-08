@@ -2,8 +2,9 @@ package com.example.projetosemestralloja;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,7 +13,7 @@ import com.example.projetosemestralloja.adapter.ItensDoCarinnhoAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaginaCarrinho extends AppCompatActivity {
+public class PaginaCarrinho extends MenuDrawerActivity {
 
     static List<ItemDoCarrinho> produtos = new ArrayList<>();
     static boolean jaadicionado = false;
@@ -20,15 +21,10 @@ public class PaginaCarrinho extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pagina_carrinho);
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View v2 = layoutInflater.inflate(R.layout.activity_pagina_carrinho, null, false);
+        drawer.addView(v2, 0);
 
-
-        addAllOnList();
-
-
-        Log.d("testCarrinho","02");
-        //criarlista();
-        Log.d("testCarrinho","03");
         RecyclerView rvProduto = findViewById(R.id.recyclercarrinho);
 
         LinearLayoutManager llhm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -37,35 +33,55 @@ public class PaginaCarrinho extends AppCompatActivity {
         };
         rvProduto.setAdapter(adapter);
     }
-    public void addAllOnList(){
-        if(!jaadicionado){
-            //Array só para teste. Validar lista q não está funcionando
-            Produto calca = new Produto(01, "calça jean", "calça", null, "10", null);
 
+    public void createItemDoCarrinho(Produto produto) {
+        int i = 0;
+        boolean isInList = false;
+        ItemDoCarrinho item = null;
+        if (!(produtos.isEmpty())) {
+            Log.d("carrinhoAddItem", "04");
 
-            ItemDoCarrinho item1 = new ItemDoCarrinho(01, calca);
-            ItemDoCarrinho item2 = new ItemDoCarrinho(02, calca);
-            ItemDoCarrinho item3 = new ItemDoCarrinho(03, calca);
-            addonlist(produtos,item1);
-            addonlist(produtos,item2);
-            addonlist(produtos,item3);
+            for (ItemDoCarrinho obj : produtos) {
+                Log.d("carrinhoAddItem", "05");
+                i++;
+                obj.setId(i);
+                if (obj.produto.id == produto.id) {
+                    Log.d("carrinhoAddItem", "01");
+                    isInList = true;
+                }
+            }
+            i++;
+            if(!isInList){
+                Log.d("carrinhoAddItem", "06");
+                item = new ItemDoCarrinho(i, produto);
+            }
+        }else {
+            item = new ItemDoCarrinho(i, produto);
+            Log.d("carrinhoAddItem", "02");
         }
-        jaadicionado = true;
+
+        if (item != null){
+            produtos.add(item);
+            Log.d("carrinhoAddItem", "03");
+        }
+        Log.d("carrinhoAddItem", "31");
     }
 
-    public void addonlist(List<ItemDoCarrinho> lista, ItemDoCarrinho item){
+
+    public void addonlist(List<ItemDoCarrinho> lista, ItemDoCarrinho item) {
         boolean taNalista = false;
-        for(int i = 0; i < lista.size(); i++ ){
-            if(lista.get(i).equals(item)){
+        int i = 0;
+        for (ItemDoCarrinho itemDoCarrinho:lista) {
+            if (lista.get(i).equals(item)) {
                 taNalista = true;
             }
         }
-        if(!taNalista){
+        if (!taNalista) {
             lista.add(item);
         }
     }
 
-    public void removeoflist(List<ItemDoCarrinho> lista, ItemDoCarrinho item){
+    public void removeoflist(List<ItemDoCarrinho> lista, ItemDoCarrinho item) {
         lista.remove(item);
     }
 }

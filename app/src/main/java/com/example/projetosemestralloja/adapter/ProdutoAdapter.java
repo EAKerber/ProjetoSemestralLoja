@@ -1,13 +1,18 @@
 package com.example.projetosemestralloja.adapter;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projetosemestralloja.DetalheProduto;
 import com.example.projetosemestralloja.Produto;
 import com.example.projetosemestralloja.databinding.ProdutoLayoutBinding;
 import com.squareup.picasso.Picasso;
@@ -53,6 +58,28 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoV
     @BindingAdapter({"imageUrl"})
     public static void loadImage(ImageView view, String url) {
         Picasso.get().load(url).into(view);
+    }
+
+    public void onClick(View v){
+        Produto produto = null;
+        for(Produto obj:ProdutoList){
+            if((obj.id + "").equals(v.getTag() + "")){
+                produto = obj;
+            }
+        }
+        try {
+            if(produto != null){
+                Intent intent = new Intent(v.getContext(), DetalheProduto.class);
+                intent.putExtra("produtoProdutoAdapter", produto);
+                v.getContext().startActivity(intent);
+            }    else {
+                Toast.makeText(v.getContext(),"Não foi possível carregar Detalhes do Produto01", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(v.getContext(),"Não foi possível carregar Detalhes do Produto02", Toast.LENGTH_LONG).show();
+            Log.e("erroProdutoAdapteer", e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @Override
