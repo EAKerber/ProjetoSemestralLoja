@@ -11,6 +11,13 @@ public class Cliente {
     private String emailText;
     private String usuarioText;
 
+
+    private String cepText;
+    private String cidadeText;
+    private String bairroText;
+    private String endeText;
+    private String numendText;
+
     public Cliente() {
     }
 
@@ -61,4 +68,45 @@ public class Cliente {
     public void setUsuarioText(String usuarioText) {
         this.usuarioText = usuarioText;
     }
+
+    public String getCepText() {
+        return cepText;
+    }
+
+    public void setCepText(String cepText) {
+        this.cepText = cepText;
+    }
+
+    public String getCidadeText() {
+        return cidadeText;
+    }
+
+    public void setCidadeText(String cidadeText) {
+        this.cidadeText = cidadeText;
+    }
+
+    public String getBairroText() {
+        return bairroText;
+    }
+
+    public void setBairroText(String bairroText) {
+        this.bairroText = bairroText;
+    }
+
+    public String getEndeText() {
+        return endeText;
+    }
+
+    public void setEndeText(String endeText) {
+        this.endeText = endeText;
+    }
+
+    public String getNumendText() {
+        return numendText;
+    }
+
+    public void setNumendText(String numendText) {
+        this.numendText = numendText;
+    }
+
 }

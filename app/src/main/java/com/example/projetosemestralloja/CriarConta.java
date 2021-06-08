@@ -85,11 +85,16 @@ public class CriarConta extends AppCompatActivity {
                 }
                 else{
                     Cliente c = new Cliente();
-                    c.setSenhaText(senhaText.getText().toString());
-                    c.setCpfText(cpfText.getText().toString());
-                    c.setDataNascText(dataNascText.getText().toString());
                     c.setEmailText(emailText.getText().toString());
+                    c.setSenhaText(senhaText.getText().toString());
                     c.setNomeText(nomeText.getText().toString());
+                    c.setDataNascText(dataNascText.getText().toString());
+                    c.setCpfText(cpfText.getText().toString());
+                    c.setCepText(cepText.getText().toString());
+                    c.setCidadeText(cidadeText.getText().toString());
+                    c.setBairroText(bairroText.getText().toString());
+                    c.setEndeText(endeText.getText().toString());
+                    c.setNumendText(numendeText.getText().toString());
                     databaseReference.child("Cliente").child(c.getCpfText()).setValue(c);
                     limparDados();
                     alert("Conta criada com sucesso.");
@@ -99,11 +104,11 @@ public class CriarConta extends AppCompatActivity {
         });
 
         //INICIO DA CRIAÇÃO DE MASCARAS
+
         //mascara CPF (Problema com validação do CPF)
         //SimpleMaskFormatter smf = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
         //MaskTextWatcher mskcpf = new MaskTextWatcher(cpfText, smf);
         //cpfText.addTextChangedListener(mskcpf);
-
 
         //mascara data nascimento
         SimpleMaskFormatter smf1 = new SimpleMaskFormatter("NN/NN/NNNN");
@@ -113,6 +118,7 @@ public class CriarConta extends AppCompatActivity {
         SimpleMaskFormatter smf2 = new SimpleMaskFormatter("NNNNN-NNN");
         MaskTextWatcher mskcep = new MaskTextWatcher(cepText, smf2);
         cepText.addTextChangedListener(mskcep);
+
         //FIM DA CRIAÇÃO DE MASCARAS
 
         iconVoltar.setOnClickListener(new View.OnClickListener() {
