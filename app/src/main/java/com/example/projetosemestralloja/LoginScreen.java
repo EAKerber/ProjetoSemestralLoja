@@ -132,7 +132,7 @@ public class LoginScreen extends AppCompatActivity {
                 System.out.println(listCliente.get(i).getSenhaText());
                 System.out.println(usuario);
                 System.out.println(senha);
-                if (usuario.equals(listCliente.get(i).getUsuarioText())) {
+                if (usuario.equals(listCliente.get(i).getEmailText())) {
                     usuarioValid = 1;
                 }
                 if (senha.equals(listCliente.get(i).getSenhaText())) {
