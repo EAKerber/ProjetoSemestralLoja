@@ -21,6 +21,8 @@ public class PaginaCarrinho extends MenuDrawerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setActivityTitle("Carrinho");
+        checkStartingItem();
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View v2 = layoutInflater.inflate(R.layout.activity_pagina_carrinho, null, false);
         drawer.addView(v2, 0);
