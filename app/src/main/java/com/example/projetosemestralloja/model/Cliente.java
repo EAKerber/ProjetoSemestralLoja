@@ -1,4 +1,4 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.model;
 
 import android.widget.Button;
 import android.widget.EditText;

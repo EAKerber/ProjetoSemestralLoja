@@ -1,4 +1,4 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,7 +8,10 @@ import android.view.View;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projetosemestralloja.model.PaginaInicialIMButton;
+import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.adapter.IMButtonAdapter;
+import com.example.projetosemestralloja.interfaces.MainActivityContrato;
 import com.example.projetosemestralloja.presenter.MainActivityPresenter;
 
 import java.util.List;
@@ -37,11 +40,9 @@ public class MainActivity2 extends MenuDrawerActivity implements MainActivityCon
 
     public void createButtons(List<PaginaInicialIMButton> IMButtonList){
         RecyclerView rvIMB = findViewById(R.id.IMB_Recycler);
-
         LinearLayoutManager llhm = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         rvIMB.setLayoutManager(llhm);
-        IMButtonAdapter adapter = new IMButtonAdapter(IMButtonList, R.layout.buttonlayout){
-        };
+        IMButtonAdapter adapter = new IMButtonAdapter(IMButtonList, R.layout.buttonlayout){};
         rvIMB.setAdapter(adapter);
     }
 

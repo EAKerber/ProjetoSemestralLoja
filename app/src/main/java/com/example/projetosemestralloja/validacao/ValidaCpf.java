@@ -1,4 +1,4 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.validacao;
 
 import java.util.InputMismatchException;
 

@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projetosemestralloja.DetalheProduto;
-import com.example.projetosemestralloja.Produto;
+import com.example.projetosemestralloja.ui.DetalheProduto;
+import com.example.projetosemestralloja.model.Produto;
 import com.example.projetosemestralloja.databinding.ProdutoLayoutBinding;
 import com.squareup.picasso.Picasso;
 

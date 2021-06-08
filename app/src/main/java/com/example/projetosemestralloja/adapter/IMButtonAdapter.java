@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projetosemestralloja.PaginaInicialIMButton;
+import com.example.projetosemestralloja.model.PaginaInicialIMButton;
 import com.example.projetosemestralloja.databinding.ButtonlayoutBinding;
 
 import java.util.List;

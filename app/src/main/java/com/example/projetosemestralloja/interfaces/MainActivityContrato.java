@@ -1,7 +1,9 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.interfaces;
 
 
 import android.content.Context;
+
+import com.example.projetosemestralloja.model.PaginaInicialIMButton;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="produto"
-            type="com.example.projetosemestralloja.Produto" />
+            type="com.example.projetosemestralloja.model.Produto" />
 
         <variable
             name="adapterProduto"

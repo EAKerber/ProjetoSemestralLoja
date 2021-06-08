@@ -1,4 +1,4 @@
-package com.example.projetosemestralloja;
+package com.example.projetosemestralloja.ui;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +8,9 @@ import android.view.View;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projetosemestralloja.model.ItemDoCarrinho;
+import com.example.projetosemestralloja.model.Produto;
+import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.adapter.ItensDoCarinnhoAdapter;
 
 import java.util.ArrayList;
