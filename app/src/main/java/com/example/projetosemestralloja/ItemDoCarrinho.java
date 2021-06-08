@@ -49,11 +49,11 @@ public class ItemDoCarrinho {
         this.precototal = precototal;
     }
 
-    public String getPrecototalString() {return precototalString + getPrecototal(); }
+    public String getPrecototalString() {return precototalString + "R$ "+ getPrecototal(); }
 
     public void setPrecototalString(String precototalString) {this.precototalString = precototalString; }
 
-    public String getQteselecionadaString() {return qteselecionadaString + getQteselecionada(); }
+    public String getQteselecionadaString() {return qteselecionadaString + (int)getQteselecionada(); }
 
     public void setQteselecionadaString(String qteselecionadaString) {this.qteselecionadaString = qteselecionadaString; }
 
