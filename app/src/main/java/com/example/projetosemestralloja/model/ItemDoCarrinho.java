@@ -8,13 +8,15 @@ public class ItemDoCarrinho {
     public double precototal;
     public String precototalString;
     public String qteselecionadaString;
+    public double valor;
 
 
     public ItemDoCarrinho(long id, Produto produto) {
         this.id = id;
         this.produto = produto;
         this.qteselecionada = 1;
-        this.precototal = (5 * qteselecionada);
+        this.valor = Double.parseDouble(produto.valor.replace(produto.valor.substring(0,2), "").replace(",","."));
+        this.precototal = (valor * qteselecionada);
         this.precototalString = "";
         this.qteselecionadaString = "";
     }
@@ -43,13 +45,13 @@ public class ItemDoCarrinho {
         this.qteselecionada = qteselecionada;
     }
 
-    public double getPrecototal() {return 5*qteselecionada; }
+    public double getPrecototal() {return valor *qteselecionada; }
 
     public void setPrecototal(int precototal) {
         this.precototal = precototal;
     }
 
-    public String getPrecototalString() {return precototalString + "R$ "+ getPrecototal(); }
+    public String getPrecototalString() {return precototalString + "R$ "+ String.format("%.2f", getPrecototal()); }
 
     public void setPrecototalString(String precototalString) {this.precototalString = precototalString; }
 
