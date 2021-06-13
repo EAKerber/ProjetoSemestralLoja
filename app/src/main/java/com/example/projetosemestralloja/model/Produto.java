@@ -13,7 +13,9 @@ public class Produto implements Parcelable {
     public JSONArray categorias;
     public String valor;
     public String url;
+    public Produto(){
 
+    };
     public Produto(int id, String title, String descricao, JSONArray categorias, String valor, String url){
         this.id = id;
         this.title = title;
