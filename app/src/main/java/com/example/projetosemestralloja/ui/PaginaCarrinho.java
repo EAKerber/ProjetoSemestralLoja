@@ -4,14 +4,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projetosemestralloja.model.ItemDoCarrinho;
-import com.example.projetosemestralloja.model.Produto;
 import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.adapter.ItensDoCarinnhoAdapter;
+import com.example.projetosemestralloja.model.ItemDoCarrinho;
+import com.example.projetosemestralloja.model.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ public class PaginaCarrinho extends MenuDrawerActivity {
         rvProduto.setAdapter(adapter);
     }
 
-    public void createItemDoCarrinho(Produto produto) {
+    public void createItemDoCarrinho(Produto produto, View v) {
         int i = 0;
         boolean isInList = false;
         ItemDoCarrinho item = null;
@@ -68,8 +69,11 @@ public class PaginaCarrinho extends MenuDrawerActivity {
         if (item != null){
             produtos.add(item);
             Log.d("carrinhoAddItem", "03");
+            Toast.makeText(v.getContext(), "Adicionado ao Carrinho", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(v.getContext(), "Produto já está no carrinho", Toast.LENGTH_SHORT).show();
         }
-        Log.d("carrinhoAddItem", "31");
+        Log.d("carrinhoAddItem", "32");
     }
 
 

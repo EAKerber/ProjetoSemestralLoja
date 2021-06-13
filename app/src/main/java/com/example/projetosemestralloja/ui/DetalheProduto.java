@@ -30,7 +30,7 @@ public class DetalheProduto extends AppCompatActivity {
     }
 
     public void addAoCarrinho(View v){
-        pg.createItemDoCarrinho(produtoDetalhe);
+        pg.createItemDoCarrinho(produtoDetalhe, v);
     }
 
     @BindingAdapter({"imageUrl2"})
