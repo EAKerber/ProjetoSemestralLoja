@@ -3,10 +3,11 @@ package com.example.projetosemestralloja.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,9 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.projetosemestralloja.model.Produto;
 import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.adapter.ProdutoAdapter;
+import com.example.projetosemestralloja.model.Produto;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,7 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdutoRecycler extends AppCompatActivity
+public class ProdutoRecycler extends MenuDrawerActivity
         implements Response.Listener<JSONArray>,
         Response.ErrorListener{
 
@@ -36,7 +37,13 @@ public class ProdutoRecycler extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_produto_recycler);
+        setActivityTitle("Ofertas");
+        checkStartingItem();
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View v4 = layoutInflater.inflate(R.layout.activity_produto_recycler, null, false);
+        drawer.addView(v4, 0);
+
+
         Intent intent = getIntent();
         tag = intent.getStringExtra("tag");
         Log.d("buttonadapter", "recebi " + tag);

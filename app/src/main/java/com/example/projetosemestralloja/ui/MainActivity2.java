@@ -26,8 +26,8 @@ public class MainActivity2 extends MenuDrawerActivity implements MainActivityCon
         setActivityTitle("Home");
         checkStartingItem();
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View v2 = layoutInflater.inflate(R.layout.activity_main2, null, false);
-        drawer.addView(v2, 0);
+        View v1 = layoutInflater.inflate(R.layout.activity_main2, null, false);
+        drawer.addView(v1, 0);
 
         presenter = new MainActivityPresenter(this);
         presenter.createIMBList();

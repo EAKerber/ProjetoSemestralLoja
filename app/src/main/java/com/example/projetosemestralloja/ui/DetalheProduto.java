@@ -1,11 +1,15 @@
 package com.example.projetosemestralloja.ui;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.core.view.GravityCompat;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 
@@ -15,19 +19,31 @@ import com.example.projetosemestralloja.model.Produto;
 import com.squareup.picasso.Picasso;
 
 
-public class DetalheProduto extends AppCompatActivity {
+public class DetalheProduto extends MenuDrawerActivity {
 
     public static Produto produtoDetalhe;
     public PaginaCarrinho pg = new PaginaCarrinho();
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalhe_produto);
+
         Intent intent = getIntent();
         produtoDetalhe = intent.getParcelableExtra("produtoProdutoAdapter");
         ActivityDetalheProdutoBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_detalhe_produto);
         binding.setProdutoDetalhe(produtoDetalhe);
+
+
+        setActivityTitle("Detalhes");
+        checkStartingItem();
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View v5 = layoutInflater.inflate(R.layout.activity_detalhe_produto, null, false);
+        drawer.addView(v5, 0);
+
+        Log.d("menuDetalhe", "3");
+
+        drawer.openDrawer(GravityCompat.START);
     }
 
     public void addAoCarrinho(View v){
