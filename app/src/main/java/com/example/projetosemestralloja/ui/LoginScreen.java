@@ -33,6 +33,8 @@ public class LoginScreen extends AppCompatActivity {
     private TextView altsenhaTextView;
     private TextView convidadoTextView;
     private TextView criarContaTextView;
+    private static String cpfLogado;
+    private static String emailLogado;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     MyFirebaseApp m = new MyFirebaseApp();
@@ -108,6 +110,7 @@ public class LoginScreen extends AppCompatActivity {
                 for (DataSnapshot objSnapshot:dataSnapshot.getChildren()){
                     Cliente c = objSnapshot.getValue(Cliente.class);
                     listCliente.add(c);
+                    System.out.println("cpf " + c.getCpfText());
                 }
             }
 
@@ -133,6 +136,7 @@ public class LoginScreen extends AppCompatActivity {
                 senhaValid = 0;
                 System.out.println(listCliente.get(i).getUsuarioText());
                 System.out.println(listCliente.get(i).getSenhaText());
+                System.out.println("CPF " + listCliente.get(i).getCpfText());
                 System.out.println(usuario);
                 System.out.println(senha);
                 if (usuario.equals(listCliente.get(i).getEmailText())) {
@@ -145,7 +149,7 @@ public class LoginScreen extends AppCompatActivity {
                     //startActivity(new Intent(getBaseContext(), 'PROXIMA TELA'));
                     limparDados();
                     alert("Login efetuado com sucesso.");
-                  
+                    cpfLogado = listCliente.get(i).getCpfText();
                     startActivity(new Intent(getBaseContext(), MainActivity2.class));
                     break;
                 }
@@ -160,7 +164,12 @@ public class LoginScreen extends AppCompatActivity {
         senhaText.setText("");
         loginText.setText("");
     }
-
+    public static String retornaCpf(){
+        return cpfLogado;
+    }
+    public static String retornaEmail(){
+        return emailLogado;
+    }
     private void alert(String s){
         Toast.makeText(getBaseContext(),s,Toast.LENGTH_SHORT).show();
     }
