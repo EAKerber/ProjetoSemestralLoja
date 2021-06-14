@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 
+
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.databinding.ActivityDetalheProdutoBinding;
@@ -18,7 +19,9 @@ import com.example.projetosemestralloja.model.ProdutoCarrinho;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.example.projetosemestralloja.model.Produto;
 import com.squareup.picasso.Picasso;
+
 
 public class DetalheProduto extends AppCompatActivity {
 
@@ -60,6 +63,39 @@ public class DetalheProduto extends AppCompatActivity {
         FirebaseApp.initializeApp(DetalheProduto.this);
         firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
         databaseReference = firebaseDatabase.getInstance().getReference();
+        pg.createItemDoCarrinho(produtoDetalhe, v);
+    }
+
+    public void compartilhar(View v){/*
+        ImageView imageView = findViewById(R.id.imageView6);
+        Intent intent = new  Intent(Intent.ACTION_SEND);
+        intent.setType("image/jpeg");
+        BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        Log.d("compratilhar", "01");
+
+
+        String packageName = getPackageName();
+        getApplicationContext().grantUriPermission(packageName,  Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Produto", null)),
+            Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Produto", null));
+
+
+
+        Log.d("compratilhar", "02");
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        startActivity(Intent.createChooser(intent,  "produto"));*/
+
+        Intent intent = new  Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        String sub = "http://www.example.com/gizmos";
+        intent.putExtra(Intent.EXTRA_TEXT, sub);
+        startActivity(Intent.createChooser(intent,  "produto"));
+
+
     }
 
     @BindingAdapter({"imageUrl2"})

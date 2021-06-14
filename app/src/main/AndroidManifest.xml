@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.projetosemestralloja">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,8 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetoSemestralLoja">
-        <activity android:name=".ui.MenuDrawerActivity"/>
-        <activity android:name=".ui.DetalheProduto" />
+        <activity android:name=".ui.FinalizarCompra"></activity>
+        <activity android:name=".ui.MenuDrawerActivity" />
+        <activity android:name=".ui.DetalheProduto">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http"
+                    android:host="www.example.com"
+                    android:pathPrefix="/gizmos" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.PaginaCarrinho"
             android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar" />
@@ -31,6 +42,10 @@
             android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar" />
         <activity android:name=".ui.RedefinirSenha" />
         <activity android:name=".ui.CriarConta" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

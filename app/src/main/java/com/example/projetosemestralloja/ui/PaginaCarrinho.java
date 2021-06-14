@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+
 import com.example.projetosemestralloja.MyFirebaseApp;
+
 import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.adapter.ItensDoCarinnhoAdapter;
 import com.example.projetosemestralloja.model.ItemDoCarrinho;
 import com.example.projetosemestralloja.model.Produto;
+
 import com.example.projetosemestralloja.model.ProdutoCarrinho;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -64,7 +67,7 @@ public class PaginaCarrinho extends MenuDrawerActivity {
             rvProduto.setAdapter(adapter);
     }
 
-    public void createItemDoCarrinho(Produto produto) {
+    public void createItemDoCarrinho(Produto produto, View v) {
         int i = 0;
         boolean isInList = false;
         ItemDoCarrinho item = null;
@@ -93,9 +96,18 @@ public class PaginaCarrinho extends MenuDrawerActivity {
 
         if (item != null){
             produtos.add(item);
+
             Log.d("carrinhoAddItem", "03 " + produtos.get(0).getId());
         }
         Log.d("carrinhoAddItem", "31");
+
+
+      /*      Log.d("carrinhoAddItem", "03");
+            Toast.makeText(v.getContext(), "Adicionado ao Carrinho", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(v.getContext(), "Produto já está no carrinho", Toast.LENGTH_SHORT).show();
+        }
+        Log.d("carrinhoAddItem", "32");*/
 
     }
 
