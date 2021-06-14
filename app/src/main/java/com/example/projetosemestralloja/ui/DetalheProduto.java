@@ -79,7 +79,7 @@ public class DetalheProduto extends MenuDrawerActivity {
         FirebaseApp.initializeApp(DetalheProduto.this);
         firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
         databaseReference = firebaseDatabase.getInstance().getReference();
-        pg.createItemDoCarrinho(produtoDetalhe, v);
+        pg.createItemDoCarrinho(produtoDetalhe);
     }
 
     public void compartilhar(View v){/*

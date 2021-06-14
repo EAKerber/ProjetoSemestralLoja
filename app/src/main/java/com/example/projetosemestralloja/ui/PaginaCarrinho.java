@@ -9,16 +9,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 
 import com.example.projetosemestralloja.MyFirebaseApp;
-
 import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.adapter.ItensDoCarinnhoAdapter;
 import com.example.projetosemestralloja.model.ItemDoCarrinho;
 import com.example.projetosemestralloja.model.Produto;
-
 import com.example.projetosemestralloja.model.ProdutoCarrinho;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -67,7 +63,7 @@ public class PaginaCarrinho extends MenuDrawerActivity {
             rvProduto.setAdapter(adapter);
     }
 
-    public void createItemDoCarrinho(Produto produto, View v) {
+    public void createItemDoCarrinho(Produto produto) {
         int i = 0;
         boolean isInList = false;
         ItemDoCarrinho item = null;
