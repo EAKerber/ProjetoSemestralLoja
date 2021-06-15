@@ -109,6 +109,9 @@ public class MenuDrawerActivity extends AppCompatActivity implements NavigationV
                 break;
             case R.id.nav_login:
                 if (!(getClass().equals(LoginScreen.class))) {
+                    produtos.clear();
+                    LoginScreen.setCpfNull();
+                    LoginScreen.setEmailNull();
                     startActivity(new Intent(getApplicationContext(), LoginScreen.class));
                 }
                 break;

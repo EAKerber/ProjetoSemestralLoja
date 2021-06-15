@@ -9,21 +9,17 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.RequiresApi;
-import androidx.core.view.GravityCompat;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
-
 
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.databinding.ActivityDetalheProdutoBinding;
-import com.example.projetosemestralloja.model.Cliente;
 import com.example.projetosemestralloja.model.Produto;
 import com.example.projetosemestralloja.model.ProdutoCarrinho;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.example.projetosemestralloja.model.Produto;
 import com.squareup.picasso.Picasso;
 
 
@@ -56,33 +52,36 @@ public class DetalheProduto extends MenuDrawerActivity {
 
         Log.d("menuDetalhe", "3");
 
-        drawer.openDrawer(GravityCompat.START);
+        //drawer.openDrawer(GravityCompat.START);
     }
 
-    public void addAoCarrinho(View v){
+    public void addAoCarrinho(View v) {
         cpf = LoginScreen.retornaCpf();
-        System.out.println(cpf);
-        inicializarBanco();
-        ProdutoCarrinho p = new ProdutoCarrinho();
-        p.setId(produtoDetalhe.getId());
-        p.setValor(produtoDetalhe.getValor());
-        p.setCpf(cpf);
-        p.setDescricao(produtoDetalhe.getDescricao());
-        p.setUrl(produtoDetalhe.getUrl());
-        p.setTitle(produtoDetalhe.getTitle());
+        if (cpf != null) {
+            System.out.println(cpf);
+            inicializarBanco(v);
+            ProdutoCarrinho p = new ProdutoCarrinho();
+            p.setId(produtoDetalhe.getId());
+            p.setValor(produtoDetalhe.getValor());
+            p.setCpf(cpf);
+            p.setDescricao(produtoDetalhe.getDescricao());
+            p.setUrl(produtoDetalhe.getUrl());
+            p.setTitle(produtoDetalhe.getTitle());
 
-        databaseReference.child("Carrinho").child(cpf).setValue(p);
-        //pg.createItemDoCarrinho(produtoDetalhe);
+            databaseReference.child("Carrinho").child(cpf).setValue(p);
+        }else{
+            pg.createItemDoCarrinho(produtoDetalhe, v);
+        }
     }
 
-    private void inicializarBanco() {
+    private void inicializarBanco(View v) {
         FirebaseApp.initializeApp(DetalheProduto.this);
         firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
         databaseReference = firebaseDatabase.getInstance().getReference();
-        pg.createItemDoCarrinho(produtoDetalhe);
+        pg.createItemDoCarrinho(produtoDetalhe, v);
     }
 
-    public void compartilhar(View v){/*
+    public void compartilhar(View v) {/*
         ImageView imageView = findViewById(R.id.imageView6);
         Intent intent = new  Intent(Intent.ACTION_SEND);
         intent.setType("image/jpeg");
@@ -105,11 +104,11 @@ public class DetalheProduto extends MenuDrawerActivity {
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         startActivity(Intent.createChooser(intent,  "produto"));*/
 
-        Intent intent = new  Intent(Intent.ACTION_SEND);
+        Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         String sub = "http://www.example.com/gizmos";
         intent.putExtra(Intent.EXTRA_TEXT, sub);
-        startActivity(Intent.createChooser(intent,  "produto"));
+        startActivity(Intent.createChooser(intent, "produto"));
 
 
     }

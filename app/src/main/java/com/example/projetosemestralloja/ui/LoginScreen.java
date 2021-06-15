@@ -170,6 +170,12 @@ public class LoginScreen extends AppCompatActivity {
     public static String retornaEmail(){
         return emailLogado;
     }
+    public static void setCpfNull() {
+        cpfLogado = null;
+    }
+    public static void setEmailNull() {
+        emailLogado = null;
+    }
     private void alert(String s){
         Toast.makeText(getBaseContext(),s,Toast.LENGTH_SHORT).show();
     }

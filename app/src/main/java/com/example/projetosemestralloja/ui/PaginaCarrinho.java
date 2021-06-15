@@ -44,7 +44,7 @@ public class PaginaCarrinho extends MenuDrawerActivity {
         super.onCreate(savedInstanceState);
         inicializarBanco();
         System.out.println("Começo evento database");
-        eventoDatabase();
+        eventoDatabase(null);
         System.out.println("Fim evento database");
         setActivityTitle("Carrinho");
         checkStartingItem();
@@ -65,9 +65,10 @@ public class PaginaCarrinho extends MenuDrawerActivity {
         };
         System.out.println("Fim itens do carrinho");
         rvProduto.setAdapter(adapter);
+
     }
 
-    public void createItemDoCarrinho(Produto produto) {
+    public void createItemDoCarrinho(Produto produto, View v) {
         int i = 0;
         boolean isInList = false;
         ItemDoCarrinho item = null;
@@ -97,17 +98,16 @@ public class PaginaCarrinho extends MenuDrawerActivity {
         if (item != null) {
             produtos.add(item);
 
-            Log.d("carrinhoAddItem", "03 " + produtos.get(0).getId());
+            Log.d("carrinhoAddItem", "03");
+            if (v != null) {
+                Toast.makeText(v.getContext(), "Adicionado ao Carrinho", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            if (v != null) {
+                Toast.makeText(v.getContext(), "Produto já está no carrinho", Toast.LENGTH_SHORT).show();
+            }
         }
-        Log.d("carrinhoAddItem", "31");
-
-
-      /*      Log.d("carrinhoAddItem", "03");
-            Toast.makeText(v.getContext(), "Adicionado ao Carrinho", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(v.getContext(), "Produto já está no carrinho", Toast.LENGTH_SHORT).show();
-        }
-        Log.d("carrinhoAddItem", "32");*/
+        Log.d("carrinhoAddItem", "32");
 
     }
 
@@ -135,7 +135,7 @@ public class PaginaCarrinho extends MenuDrawerActivity {
         databaseReference = firebaseDatabase.getInstance().getReference();
     }
 
-    private void eventoDatabase() {
+    private void eventoDatabase(View v) {
         databaseReference.child("Carrinho").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -144,27 +144,29 @@ public class PaginaCarrinho extends MenuDrawerActivity {
                     listProduto.add(p);
 
                     cpf = LoginScreen.retornaCpf();
-                    if (cpf.equals(p.getCpf())) {
-                        System.out.println("Entrou aqui " + p.getCpf() + " cpf 2: " + cpf);
-                        Produto pr = new Produto();
-                        pr.setValor(p.getValor());
-                        pr.setId(p.getId());
-                        pr.setUrl(p.getUrl());
-                        pr.setTitle(p.getTitle());
-                        pr.setDescricao(p.getDescricao());
-                        pr.setCategorias(null);
-                        System.out.println("VALIDAR DADOS ");
-                        System.out.println("valor " + pr.getValor());
-                        System.out.println("url " + pr.getUrl());
-                        System.out.println("descricao " + pr.getDescricao());
-                        System.out.println("id " + pr.getId());
-                        System.out.println("Titulo " + pr.getTitle());
-                        System.out.println("FIM VALIDACAO DADOS ");
-                        System.out.println("Tamanho lista produtos " + produtos.size());
-                        createItemDoCarrinho(pr);
-                        System.out.println("Fim teste ");
-                    }
+                    if (cpf != null) {
 
+                        if (cpf.equals(p.getCpf())) {
+                            System.out.println("Entrou aqui " + p.getCpf() + " cpf 2: " + cpf);
+                            Produto pr = new Produto();
+                            pr.setValor(p.getValor());
+                            pr.setId(p.getId());
+                            pr.setUrl(p.getUrl());
+                            pr.setTitle(p.getTitle());
+                            pr.setDescricao(p.getDescricao());
+                            pr.setCategorias(null);
+                            System.out.println("VALIDAR DADOS ");
+                            System.out.println("valor " + pr.getValor());
+                            System.out.println("url " + pr.getUrl());
+                            System.out.println("descricao " + pr.getDescricao());
+                            System.out.println("id " + pr.getId());
+                            System.out.println("Titulo " + pr.getTitle());
+                            System.out.println("FIM VALIDACAO DADOS ");
+                            System.out.println("Tamanho lista produtos " + produtos.size());
+                            createItemDoCarrinho(pr, v);
+                            System.out.println("Fim teste ");
+                        }
+                    }
                 }
             }
 
@@ -180,9 +182,8 @@ public class PaginaCarrinho extends MenuDrawerActivity {
     }
 
 
-
-    public void goToFinalizarCompra(View v){
-        startActivity(new Intent(v.getContext(), FinalizarCompra.class) );
+    public void goToFinalizarCompra(View v) {
+        startActivity(new Intent(v.getContext(), FinalizarCompra.class));
     }
 
 }
