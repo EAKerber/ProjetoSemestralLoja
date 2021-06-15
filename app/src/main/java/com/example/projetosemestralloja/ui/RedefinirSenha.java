@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.projetosemestralloja.model.Cliente;
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
+import com.example.projetosemestralloja.presenter.BancoPresenter;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,6 +35,7 @@ public class RedefinirSenha extends AppCompatActivity {
     private Button redefinirSenhaButton;
     private ImageView voltarButton;
 
+    BancoPresenter bp;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     MyFirebaseApp m = new MyFirebaseApp();
@@ -55,16 +57,17 @@ public class RedefinirSenha extends AppCompatActivity {
         novaSenhaText = (EditText)findViewById(R.id.senha);
         redefinirSenhaButton = (Button)findViewById(R.id.RedefinirSenha);
         voltarButton = (ImageView)findViewById(R.id.Voltar);
-        inicializarBanco();
+        bp.inicializarBancoConta();
 
-        eventoDatabase();
+        bp.eventoDatabase();
 
         redefinirSenhaButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 System.out.println("cliquei no botao");
 
-               pesquisarBanco(nomeText.getText().toString(), cpfText.getText().toString(), emailText.getText().toString(), novaSenhaText.getText().toString());
+               bp.pesquisarBanco2(nomeText.getText().toString(), cpfText.getText().toString(),
+                                 emailText.getText().toString(), novaSenhaText.getText().toString());
 
             }
         });
@@ -79,72 +82,7 @@ public class RedefinirSenha extends AppCompatActivity {
             }
         });
     }
-    private void inicializarBanco() {
-        FirebaseApp.initializeApp(RedefinirSenha.this);
-        firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
-        databaseReference = firebaseDatabase.getInstance().getReference();
-    }
-    private void eventoDatabase() {
-        databaseReference.child("Cliente").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                listCliente.clear();
-                for (DataSnapshot objSnapshot:dataSnapshot.getChildren()){
-                    Cliente c = objSnapshot.getValue(Cliente.class);
-                    listCliente.add(c);
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-    private void pesquisarBanco(String nome,  String cpf, String email, String senha){
-        int cpfValid = 0, nomeValid = 0, emailValid = 0, size;
-        size = listCliente.size();
-        Cliente c = new Cliente();
-        if (nome.equals("") || cpf.equals("") || email.equals("")){
-            alert("Todos os campos devem ser preenchidos");
-            System.out.println("sem dados");
-
-        }else {
-            System.out.println("com dados");
-            for (int i = 0; i < size; i++){
-                cpfValid = 0;
-                nomeValid = 0;
-                emailValid = 0;
-                if (nome.equals(listCliente.get(i).getNomeText())) {
-                    nomeValid = 1;
-                }
-                if (cpf.equals(listCliente.get(i).getCpfText())) {
-                    cpfValid = 1;
-                }
-                if (email.equals(listCliente.get(i).getEmailText())) {
-                    emailValid = 1;
-                }
-                if (nomeValid == 1 && cpfValid == 1 && emailValid == 1) {
-                    c.setCpfText(listCliente.get(i).getCpfText().toString());
-                    c.setDataNascText(listCliente.get(i).getDataNascText().toString());
-                    c.setNomeText(listCliente.get(i).getNomeText().toString());
-                    c.setEmailText(listCliente.get(i).getEmailText().toString());
-                    c.setUsuarioText(listCliente.get(i).getUsuarioText().toString());
-                    c.setSenhaText(senha.toString());
-                    databaseReference.child("Cliente").child(c.getCpfText()).setValue(c);
-                    limparDados();
-                    alert("Senha alterada com sucesso.");
-                    break;
-                }
-            }
-            if (cpfValid == 0 || nomeValid == 0 || emailValid == 0){
-                alert("Dados não encontrados.");
-            }
-        }
-    }
-    private void alert(String s){
-        Toast.makeText(getBaseContext(),s,Toast.LENGTH_SHORT).show();
-    }
     private void limparDados() {
         novaSenhaText.setText("");
         cpfText.setText("");
