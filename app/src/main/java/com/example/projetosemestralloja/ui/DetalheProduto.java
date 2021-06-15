@@ -27,7 +27,7 @@ import com.squareup.picasso.Picasso;
 import java.util.UUID;
 
 
-public class DetalheProduto extends MenuDrawerActivity {
+public class DetalheProduto extends MenuDrawerActivity implements BancoContrato{
 
     public static Produto produtoDetalhe;
     public PaginaCarrinho pg = new PaginaCarrinho();

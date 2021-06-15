@@ -30,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaginaCarrinho extends MenuDrawerActivity {
+public class PaginaCarrinho extends MenuDrawerActivity implements BancoContrato{
 
     static List<ItemDoCarrinho> produtos = new ArrayList<>();
     static boolean vaiFinalizarCompra = false;

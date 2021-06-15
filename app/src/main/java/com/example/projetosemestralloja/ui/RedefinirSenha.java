@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RedefinirSenha extends AppCompatActivity {
+public class RedefinirSenha extends AppCompatActivity implements BancoContrato{
     private EditText nomeText;
     private EditText cpfText;
     private EditText emailText;

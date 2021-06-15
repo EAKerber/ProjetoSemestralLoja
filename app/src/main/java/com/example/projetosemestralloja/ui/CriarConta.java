@@ -26,7 +26,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class CriarConta extends AppCompatActivity {
+public class CriarConta extends AppCompatActivity implements BancoContrato {
     private ImageView iconVoltar;
     private EditText emailText;
     private EditText senhaText;
