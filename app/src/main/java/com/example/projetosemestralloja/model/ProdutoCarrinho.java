@@ -13,6 +13,7 @@ public class ProdutoCarrinho{
     public String valor;
     public String url;
     public String cpf;
+    public String uuid;
 
     public ProdutoCarrinho(){
     }
@@ -54,5 +55,13 @@ public class ProdutoCarrinho{
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }

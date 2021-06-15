@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import java.util.UUID;
+
 
 public class DetalheProduto extends MenuDrawerActivity {
 
@@ -67,8 +69,9 @@ public class DetalheProduto extends MenuDrawerActivity {
             p.setDescricao(produtoDetalhe.getDescricao());
             p.setUrl(produtoDetalhe.getUrl());
             p.setTitle(produtoDetalhe.getTitle());
+            p.setUuid(UUID.randomUUID().toString());
 
-            databaseReference.child("Carrinho").child(cpf).setValue(p);
+            databaseReference.child("Carrinho").child(p.getUuid()).setValue(p);
         }else{
             pg.createItemDoCarrinho(produtoDetalhe, v);
         }
