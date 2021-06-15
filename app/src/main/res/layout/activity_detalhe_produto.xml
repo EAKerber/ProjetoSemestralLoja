@@ -9,6 +9,11 @@
             name="produtoDetalhe"
             type="com.example.projetosemestralloja.model.Produto" />
 
+        <variable
+            name="detalhe"
+            type="com.example.projetosemestralloja.ui.DetalheProduto" />
+
+
     </data>
 
     <LinearLayout
@@ -36,31 +41,32 @@
                     pra dar bind na imagem me chama que eu faço depois   -->
 
 
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="match_parent"
-                        android:layout_height="400dp"
-                        app:imageUrl2="@{produtoDetalhe.url}"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/button_place_holder" />
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:onClick="checarPermissao"
+                    app:imageUrl2="@{produtoDetalhe.url}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/button_place_holder" />
 
-                    <TextView
-                        android:id="@+id/tituloProduto"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/kadwa"
-                        android:gravity="center"
-                        android:text="@{produtoDetalhe.title}"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="@color/cor5"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+                <TextView
+                    android:id="@+id/tituloProduto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/kadwa"
+                    android:gravity="center"
+                    android:text="@{produtoDetalhe.title}"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/cor5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/linearLayout"
@@ -132,49 +138,48 @@
                             android:layout_gravity="center"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/produtoDescricao"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingStart="10dp"
-                                android:text="@{produtoDetalhe.descricao}"
-                                android:textAlignment="viewStart" />
+                        <TextView
+                            android:id="@+id/produtoDescricao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:text="@{produtoDetalhe.descricao}"
+                            android:textAlignment="viewStart" />
 
-                        </LinearLayout>
-                    </ScrollView>
+                    </LinearLayout>
+                </ScrollView>
 
-                    <Button
-                        android:id="@+id/button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:onClick="addAoCarrinho"
-                        android:text="Adicionar ao Carrinho"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:onClick="addAoCarrinho"
+                    android:text="Adicionar ao Carrinho"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
-                    <ImageButton
-                        android:id="@+id/imageButton2"
-                        android:layout_width="67dp"
-                        android:layout_height="61dp"
-                        android:onClick="compartilhar"
-                        android:tag="@{produtoDetalhe.title}"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/ic_compartilhar"
-                        tools:ignore="VectorDrawableCompat" />
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="67dp"
+                    android:layout_height="61dp"
+                    android:onClick="checarPermissao"
+                    android:tag="@{produtoDetalhe.title}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_compartilhar"
+                    tools:ignore="VectorDrawableCompat" />
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </LinearLayout>
-        </ScrollView>
-
+        </LinearLayout>
+    </ScrollView>
 
     </LinearLayout>
 </layout>
