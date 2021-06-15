@@ -64,6 +64,7 @@
         android:id="@+id/bt_finalizarCompra"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:onClick="finalizarCompra"
         android:text="Finalizar Compra"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

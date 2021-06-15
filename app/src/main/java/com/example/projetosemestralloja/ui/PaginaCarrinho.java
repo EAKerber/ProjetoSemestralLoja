@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.adapter.ItensDoCarinnhoAdapter;
+import com.example.projetosemestralloja.model.Cliente;
 import com.example.projetosemestralloja.model.ItemDoCarrinho;
 import com.example.projetosemestralloja.model.Produto;
 import com.example.projetosemestralloja.model.ProdutoCarrinho;
@@ -30,13 +31,16 @@ import java.util.List;
 public class PaginaCarrinho extends MenuDrawerActivity {
 
     static List<ItemDoCarrinho> produtos = new ArrayList<>();
-    static boolean jaadicionado = false;
+    static boolean vaiFinalizarCompra = false;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     MyFirebaseApp m = new MyFirebaseApp();
     int size;
     private List<ProdutoCarrinho> listProduto = new ArrayList<ProdutoCarrinho>();
+    private List<Cliente> listCliente = new ArrayList<Cliente>();
     String cpf;
+    String cep;
+    String endereco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,6 +179,31 @@ public class PaginaCarrinho extends MenuDrawerActivity {
 
             }
         });
+
+        databaseReference.child("Cliente").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
+                    Cliente p = objSnapshot.getValue(Cliente.class);
+                    listCliente.add(p);
+
+                    cpf = LoginScreen.retornaCpf();
+                    if (cpf != null) {
+
+                        if (cpf.equals(p.getCpfText())) {
+                            cep = p.getCepText();
+                            endereco = p.getCidadeText() + " " + p.getBairroText() + " " + p.getNumendText();
+
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void alert(String s) {
@@ -183,7 +212,19 @@ public class PaginaCarrinho extends MenuDrawerActivity {
 
 
     public void goToFinalizarCompra(View v) {
-        startActivity(new Intent(v.getContext(), FinalizarCompra.class));
+        if (produtos.size() > 0) {
+            if (cpf != null) {
+                Intent intent = new Intent(v.getContext(), FinalizarCompra.class);
+                intent.putExtra("CEP", cep);
+                intent.putExtra("Endereco", endereco);
+                startActivity(intent);
+            } else {
+                Toast.makeText(v.getContext(), "Faça login para poder Finalizar Compra", Toast.LENGTH_SHORT).show();
+                vaiFinalizarCompra = true;
+            }
+        }else{
+            Toast.makeText(v.getContext(), "Não há itens para finalizar compra", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

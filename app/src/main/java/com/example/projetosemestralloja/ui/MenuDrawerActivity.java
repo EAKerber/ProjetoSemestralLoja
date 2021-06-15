@@ -23,6 +23,7 @@ import com.example.projetosemestralloja.model.ItemDoCarrinho;
 import com.google.android.material.navigation.NavigationView;
 
 import static com.example.projetosemestralloja.ui.PaginaCarrinho.produtos;
+import static com.example.projetosemestralloja.ui.PaginaCarrinho.vaiFinalizarCompra;
 
 public class MenuDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SensorEventListener {
 
@@ -109,7 +110,10 @@ public class MenuDrawerActivity extends AppCompatActivity implements NavigationV
                 break;
             case R.id.nav_login:
                 if (!(getClass().equals(LoginScreen.class))) {
-                    produtos.clear();
+                    if (!vaiFinalizarCompra) {
+                        produtos.clear();
+                    }
+                    vaiFinalizarCompra = false;
                     LoginScreen.setCpfNull();
                     LoginScreen.setEmailNull();
                     startActivity(new Intent(getApplicationContext(), LoginScreen.class));
