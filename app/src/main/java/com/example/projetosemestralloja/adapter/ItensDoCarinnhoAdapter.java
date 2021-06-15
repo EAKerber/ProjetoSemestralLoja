@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projetosemestralloja.model.ItemDoCarrinho;
 import com.example.projetosemestralloja.databinding.LayoutItensCarrinhoBinding;
+import com.example.projetosemestralloja.model.ItemDoCarrinho;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -31,13 +31,11 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
     @Override
     public ItemCarrinhoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutItensCarrinhoBinding v = LayoutItensCarrinhoBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        //notifyDataSetChanged();
         return new ItemCarrinhoViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ItemCarrinhoViewHolder holder, int position) {
-
         ItemDoCarrinho itemDoCarrinho = (ItemDoCarrinho) this.itemDoCarrinhoList.get(position);
         holder.view.setItemCarrinho(itemDoCarrinho);
         holder.view.setAdapterItemCarrinho(this);
@@ -83,55 +81,86 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
         Picasso.get().load(url).into(view);
     }
 
-    public void addOnClick(View v){
+    public void addOnClick(View v) {
         ItemDoCarrinho itemDoCarrinho = null;
-        for(ItemDoCarrinho obj:itemDoCarrinhoList){
-            if((obj.id + "").equals(v.getTag() + "")){
+        for (ItemDoCarrinho obj : itemDoCarrinhoList) {
+            if ((obj.id + "").equals(v.getTag() + "")) {
                 itemDoCarrinho = obj;
             }
         }
         try {
-            if(itemDoCarrinho != null){
+            if (itemDoCarrinho != null) {
                 itemDoCarrinho.qteselecionada = itemDoCarrinho.qteselecionada + 1;
                 notifyItemChanged(itemDoCarrinhoList.indexOf(itemDoCarrinho));
                 notifyDataSetChanged();
-            }    else {
-                Toast.makeText(v.getContext(),"Não foi possível adiconar 01", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(v.getContext(), "Não foi possível adiconar 01", Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
-            Toast.makeText(v.getContext(),"Não foi possível adiconar 02", Toast.LENGTH_LONG).show();
+            Toast.makeText(v.getContext(), "Não foi possível adiconar 02", Toast.LENGTH_LONG).show();
             Log.e("erroCarrinhoAdapteer", e.getMessage());
             e.printStackTrace();
         }
     }
 
-    public void subOnClick(View v){
+    public void subOnClick(View v) {
         ItemDoCarrinho itemDoCarrinho = null;
-        for(ItemDoCarrinho obj:itemDoCarrinhoList){
-            if((obj.id + "").equals(v.getTag() + "")){
+        for (ItemDoCarrinho obj : itemDoCarrinhoList) {
+            if ((obj.id + "").equals(v.getTag() + "")) {
                 itemDoCarrinho = obj;
             }
         }
         try {
-            if(itemDoCarrinho != null){
-                if(itemDoCarrinho.qteselecionada > 1) {
+            if (itemDoCarrinho != null) {
+                if (itemDoCarrinho.qteselecionada > 1) {
                     itemDoCarrinho.qteselecionada = itemDoCarrinho.qteselecionada - 1;
                     notifyItemChanged(itemDoCarrinhoList.indexOf(itemDoCarrinho));
                     notifyDataSetChanged();
-                }else{
+                }
+            } else {
+                Toast.makeText(v.getContext(), "Não foi possível remover 01", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(v.getContext(), "Não foi possível remover 02", Toast.LENGTH_LONG).show();
+            Log.e("erroCarrinhoAdapteer", e.getMessage());
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void removeOnClick(View v) {
+        notifyDataSetChanged();
+        ItemDoCarrinho itemDoCarrinho = null;
+        for (ItemDoCarrinho obj : itemDoCarrinhoList) {
+            if ((obj.id + "").equals(v.getTag() + "")) {
+                itemDoCarrinho = obj;
+            }
+        }
+        try {
+            if (itemDoCarrinho != null) {
+                long curTime = System.currentTimeMillis();
+                long mLastlickTime = itemDoCarrinho.getmLastlickTime();
+                Toast.makeText(v.getContext(), "Clique novamente para excluir item", Toast.LENGTH_SHORT).show();
+
+                if ((curTime - mLastlickTime) > 1000 && (curTime - mLastlickTime) < 5000) {
                     itemDoCarrinhoList.remove(itemDoCarrinho);
                     notifyItemRemoved(itemDoCarrinhoList.indexOf(itemDoCarrinho));
                     notifyItemRangeChanged(itemDoCarrinhoList.indexOf(itemDoCarrinho), 1);
                     notifyDataSetChanged();
+                }else {
+                    itemDoCarrinho.setmLastlickTime(System.currentTimeMillis());
                 }
-            }    else {
-                Toast.makeText(v.getContext(),"Não foi possível remover 01", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(v.getContext(), "Não foi possível excluir 01", Toast.LENGTH_LONG).show();
             }
+
         } catch (Exception e) {
-            Toast.makeText(v.getContext(),"Não foi possível remover 02", Toast.LENGTH_LONG).show();
+            Toast.makeText(v.getContext(), "Não foi possível excluir 02", Toast.LENGTH_LONG).show();
             Log.e("erroCarrinhoAdapteer", e.getMessage());
             e.printStackTrace();
         }
+
     }
 
     @Override
@@ -144,7 +173,6 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
 
         public ItemCarrinhoViewHolder(@NonNull LayoutItensCarrinhoBinding itemView) {
             super(itemView.getRoot());
-            //notifyDataSetChanged();
             this.view = itemView;
         }
 

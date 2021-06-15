@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetoSemestralLoja">
-        <activity android:name=".ui.FinalizarCompra"></activity>
+        <activity android:name=".ui.FinalizarCompra"
+            android:theme="@style/Theme.ProjetoSemestralLoja.NoActionBar"></activity>
         <activity android:name=".ui.MenuDrawerActivity" />
         <activity
             android:name=".ui.DetalheProduto"
