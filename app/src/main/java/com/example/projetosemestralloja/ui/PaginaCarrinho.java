@@ -140,7 +140,7 @@ public class PaginaCarrinho extends MenuDrawerActivity {
     }
 
     private void eventoDatabase(View v) {
-        databaseReference.child("Carrinho").addValueEventListener(new ValueEventListener() {
+        /*databaseReference.child("Carrinho").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
@@ -178,7 +178,7 @@ public class PaginaCarrinho extends MenuDrawerActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
         databaseReference.child("Cliente").addValueEventListener(new ValueEventListener() {
             @Override

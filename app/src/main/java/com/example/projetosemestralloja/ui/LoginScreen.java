@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.projetosemestralloja.model.Cliente;
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
+import com.example.projetosemestralloja.model.ItemDoCarrinho;
 import com.example.projetosemestralloja.model.Produto;
 import com.example.projetosemestralloja.model.ProdutoCarrinho;
 import com.google.firebase.FirebaseApp;
@@ -40,7 +41,7 @@ public class LoginScreen extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     MyFirebaseApp m = new MyFirebaseApp();
-
+    static List<ItemDoCarrinho> produtos = new ArrayList<>();
     private List<Cliente> listCliente = new ArrayList<Cliente>();
     private ArrayAdapter<Cliente> arrayAdapterCliente;
     private List<ProdutoCarrinho> listProduto = new ArrayList<ProdutoCarrinho>();
@@ -56,7 +57,7 @@ public class LoginScreen extends AppCompatActivity {
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        produtos.clear();
         loginText = (EditText)findViewById(R.id.Usuario);
         senhaText = (EditText)findViewById(R.id.Senha);
         loginButton = (Button)findViewById(R.id.Acessar);

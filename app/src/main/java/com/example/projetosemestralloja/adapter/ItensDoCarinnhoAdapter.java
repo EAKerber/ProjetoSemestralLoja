@@ -11,17 +11,29 @@ import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.databinding.LayoutItensCarrinhoBinding;
 import com.example.projetosemestralloja.model.ItemDoCarrinho;
+import com.example.projetosemestralloja.model.ProdutoCarrinho;
+import com.example.projetosemestralloja.ui.LoginScreen;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnhoAdapter.ItemCarrinhoViewHolder> {
 
     private List<ItemDoCarrinho> itemDoCarrinhoList;
     private int layout;
-
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    String cpf;
     public ItensDoCarinnhoAdapter(List<ItemDoCarrinho> itemDoCarrinhoList, int layout) {
         this.itemDoCarrinhoList = itemDoCarrinhoList;
         this.layout = layout;
@@ -144,6 +156,9 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
                 Toast.makeText(v.getContext(), "Clique novamente para excluir item", Toast.LENGTH_SHORT).show();
 
                 if ((curTime - mLastlickTime) > 1000 && (curTime - mLastlickTime) < 5000) {
+                    inicializarBanco();
+                    cpf = LoginScreen.retornaCpf();
+                    eventoDatabase(cpf, itemDoCarrinho.getProduto().getId());
                     itemDoCarrinhoList.remove(itemDoCarrinho);
                     notifyItemRemoved(itemDoCarrinhoList.indexOf(itemDoCarrinho));
                     notifyItemRangeChanged(itemDoCarrinhoList.indexOf(itemDoCarrinho), 1);
@@ -177,4 +192,30 @@ public class ItensDoCarinnhoAdapter extends RecyclerView.Adapter<ItensDoCarinnho
         }
 
     }
+
+    private void inicializarBanco() {
+        //FirebaseApp.initializeApp(ItensDoCarinnhoAdapter.this);
+        firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
+        databaseReference = firebaseDatabase.getInstance().getReference();
+    }
+
+    private void eventoDatabase(String cpf, int id) {
+        databaseReference.child("Carrinho").addValueEventListener(new ValueEventListener() {
+
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
+                    ProdutoCarrinho p = objSnapshot.getValue(ProdutoCarrinho.class);
+                    if(cpf.equals(p.getCpf()) && id == p.getId()){
+                        databaseReference.child("Carrinho").child(p.getUuid()).removeValue();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 }

@@ -7,14 +7,23 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.adapter.ItensDoCarinnhoAdapter;
+import com.example.projetosemestralloja.model.ProdutoCarrinho;
 import com.example.projetosemestralloja.validacao.ValidaCartao;
 import com.example.projetosemestralloja.validacao.ValidaCep;
 import com.example.projetosemestralloja.validacao.ValidaEndereco;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static com.example.projetosemestralloja.ui.PaginaCarrinho.produtos;
 
@@ -23,7 +32,8 @@ public class FinalizarCompra extends MenuDrawerActivity {
     private String cep;
     private String endereco;
     private String cartao;
-
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +104,13 @@ public class FinalizarCompra extends MenuDrawerActivity {
 
     public void finalizarCompra(View v) {
         if (validar(v)) {
+            String cpf;
+            cpf = LoginScreen.retornaCpf();
+            inicializarBanco();
             Toast.makeText(v.getContext(), "Pedido Realizado, Agradecemos pela Preferencia!", Toast.LENGTH_SHORT).show();
+            for (int i = 0; i < produtos.size(); i++){
+                eventoDatabase(cpf, produtos.get(i).getProduto().getId());
+            }
             produtos.clear();
             goToCarrinho(v);
         }
@@ -114,6 +130,30 @@ public class FinalizarCompra extends MenuDrawerActivity {
         endereco = tx.getText().toString();
         tx = findViewById(R.id.et_numeroCartao);
         cartao = tx.getText().toString();
+    }
+
+    private void eventoDatabase(String cpf, int id) {
+        databaseReference.child("Carrinho").addValueEventListener(new ValueEventListener() {
+
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
+                    ProdutoCarrinho p = objSnapshot.getValue(ProdutoCarrinho.class);
+                    if(cpf.equals(p.getCpf()) && id == p.getId()){
+                        databaseReference.child("Carrinho").child(p.getUuid()).removeValue();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void inicializarBanco() {
+        FirebaseApp.initializeApp(FinalizarCompra.this);
+        firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
+        databaseReference = firebaseDatabase.getInstance().getReference();
     }
 
 
