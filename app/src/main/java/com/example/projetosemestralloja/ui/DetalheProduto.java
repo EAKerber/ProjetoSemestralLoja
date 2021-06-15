@@ -17,6 +17,7 @@ import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.databinding.ActivityDetalheProdutoBinding;
 import com.example.projetosemestralloja.model.Produto;
 import com.example.projetosemestralloja.model.ProdutoCarrinho;
+import com.example.projetosemestralloja.presenter.BancoPresenter;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -31,7 +32,7 @@ public class DetalheProduto extends MenuDrawerActivity {
     public PaginaCarrinho pg = new PaginaCarrinho();
     private String cpf;
 
-    FirebaseDatabase firebaseDatabase;
+    BancoPresenter bp;
     DatabaseReference databaseReference;
     MyFirebaseApp m = new MyFirebaseApp();
 
@@ -45,7 +46,6 @@ public class DetalheProduto extends MenuDrawerActivity {
         ActivityDetalheProdutoBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_detalhe_produto);
         binding.setProdutoDetalhe(produtoDetalhe);
 
-
         setActivityTitle("Detalhes");
         checkStartingItem();
         LayoutInflater layoutInflater = LayoutInflater.from(this);
@@ -54,14 +54,13 @@ public class DetalheProduto extends MenuDrawerActivity {
 
         Log.d("menuDetalhe", "3");
 
-        //drawer.openDrawer(GravityCompat.START);
     }
 
     public void addAoCarrinho(View v) {
         cpf = LoginScreen.retornaCpf();
         if (cpf != null) {
             System.out.println(cpf);
-            inicializarBanco(v);
+            bp.inicializarBanco(v);
             ProdutoCarrinho p = new ProdutoCarrinho();
             p.setId(produtoDetalhe.getId());
             p.setValor(produtoDetalhe.getValor());
@@ -77,48 +76,16 @@ public class DetalheProduto extends MenuDrawerActivity {
         }
     }
 
-    private void inicializarBanco(View v) {
-        FirebaseApp.initializeApp(DetalheProduto.this);
-        firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
-        databaseReference = firebaseDatabase.getInstance().getReference();
-        pg.createItemDoCarrinho(produtoDetalhe, v);
-    }
-
-    public void compartilhar(View v) {/*
-        ImageView imageView = findViewById(R.id.imageView6);
-        Intent intent = new  Intent(Intent.ACTION_SEND);
-        intent.setType("image/jpeg");
-        BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
-        Bitmap bitmap = drawable.getBitmap();
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        Log.d("compratilhar", "01");
-
-
-        String packageName = getPackageName();
-        getApplicationContext().grantUriPermission(packageName,  Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Produto", null)),
-            Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-        Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Produto", null));
-
-
-
-        Log.d("compratilhar", "02");
-        intent.putExtra(Intent.EXTRA_STREAM, uri);
-        startActivity(Intent.createChooser(intent,  "produto"));*/
-
+    public void compartilhar(View v) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         String sub = "http://www.example.com/gizmos";
         intent.putExtra(Intent.EXTRA_TEXT, sub);
         startActivity(Intent.createChooser(intent, "produto"));
-
-
     }
 
     @BindingAdapter({"imageUrl2"})
     public static void loadImage(ImageView view, String url) {
         Picasso.get().load(url).into(view);
     }
-
 }

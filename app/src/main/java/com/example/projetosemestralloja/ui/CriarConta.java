@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.projetosemestralloja.model.Cliente;
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
+import com.example.projetosemestralloja.presenter.BancoPresenter;
 import com.example.projetosemestralloja.validacao.ValidaCep;
 import com.example.projetosemestralloja.validacao.ValidaCpf;
 import com.example.projetosemestralloja.validacao.ValidaData;
@@ -37,6 +38,8 @@ public class CriarConta extends AppCompatActivity {
     private EditText endeText;
     private EditText numendeText;
     private Button criarContaButton;
+
+    BancoPresenter bp;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -65,7 +68,7 @@ public class CriarConta extends AppCompatActivity {
         criarContaButton = (Button)findViewById(R.id.Criarconta);
 
 
-        inicializarBanco();
+        bp.inicializarBancoConta();
 
         //Alterar para a tela correta com os devidos alertas.
         criarContaButton.setOnClickListener(new View.OnClickListener(){
@@ -103,7 +106,7 @@ public class CriarConta extends AppCompatActivity {
                     c.setEndeText(endeText.getText().toString());
                     c.setNumendText(numendeText.getText().toString());
                     databaseReference.child("Cliente").child(c.getCpfText()).setValue(c);
-                    limparDados();
+                    bp.limparDados();
                     alert("Conta criada com sucesso.");
                 }
 
@@ -137,24 +140,24 @@ public class CriarConta extends AppCompatActivity {
         });
     }
 
-    private void inicializarBanco() {
-        FirebaseApp.initializeApp(CriarConta.this);
-        firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
-        databaseReference = firebaseDatabase.getInstance().getReference();
-    }
+//    private void inicializarBanco() {
+//        FirebaseApp.initializeApp(CriarConta.this);
+//        firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
+//        databaseReference = firebaseDatabase.getInstance().getReference();
+//    }
 
-    private void limparDados() {
-        emailText.setText("");
-        senhaText.setText("");
-        nomeText.setText("");
-        dataNascText.setText("");
-        cpfText.setText("");
-        cepText.setText("");
-        cidadeText.setText("");
-        bairroText.setText("");
-        endeText.setText("");
-        numendeText.setText("");
-    }
+//    private void limparDados() {
+//        emailText.setText("");
+//        senhaText.setText("");
+//        nomeText.setText("");
+//        dataNascText.setText("");
+//        cpfText.setText("");
+//        cepText.setText("");
+//        cidadeText.setText("");
+//        bairroText.setText("");
+//        endeText.setText("");
+//        numendeText.setText("");
+//    }
     private void alert(String s){
         Toast.makeText(getBaseContext(),s,Toast.LENGTH_SHORT).show();
     }
