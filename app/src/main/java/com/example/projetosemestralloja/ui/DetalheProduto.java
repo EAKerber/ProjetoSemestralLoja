@@ -15,6 +15,7 @@ import androidx.databinding.DataBindingUtil;
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.databinding.ActivityDetalheProdutoBinding;
+import com.example.projetosemestralloja.interfaces.BancoContrato;
 import com.example.projetosemestralloja.model.Produto;
 import com.example.projetosemestralloja.model.ProdutoCarrinho;
 import com.example.projetosemestralloja.presenter.BancoPresenter;
@@ -32,7 +33,7 @@ public class DetalheProduto extends MenuDrawerActivity {
     public PaginaCarrinho pg = new PaginaCarrinho();
     private String cpf;
 
-    BancoPresenter bp;
+    BancoContrato.presenter bp;
     DatabaseReference databaseReference;
     MyFirebaseApp m = new MyFirebaseApp();
 

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
 import com.example.projetosemestralloja.adapter.ItensDoCarinnhoAdapter;
+import com.example.projetosemestralloja.interfaces.BancoContrato;
 import com.example.projetosemestralloja.model.Cliente;
 import com.example.projetosemestralloja.model.ItemDoCarrinho;
 import com.example.projetosemestralloja.model.Produto;
@@ -36,7 +37,7 @@ public class PaginaCarrinho extends MenuDrawerActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     MyFirebaseApp m = new MyFirebaseApp();
-    BancoPresenter bp;
+    BancoContrato.presenter bp;
     int size;
     private List<ProdutoCarrinho> listProduto = new ArrayList<ProdutoCarrinho>();
     private List<Cliente> listCliente = new ArrayList<Cliente>();

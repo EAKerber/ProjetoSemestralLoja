@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.projetosemestralloja.interfaces.BancoContrato;
 import com.example.projetosemestralloja.model.Cliente;
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
@@ -35,7 +36,7 @@ public class RedefinirSenha extends AppCompatActivity {
     private Button redefinirSenhaButton;
     private ImageView voltarButton;
 
-    BancoPresenter bp;
+    BancoContrato.presenter bp;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     MyFirebaseApp m = new MyFirebaseApp();

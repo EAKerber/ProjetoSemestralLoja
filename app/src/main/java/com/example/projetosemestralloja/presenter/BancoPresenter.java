@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
+import com.example.projetosemestralloja.interfaces.BancoContrato;
 import com.example.projetosemestralloja.model.Cliente;
 import com.example.projetosemestralloja.model.ItemDoCarrinho;
 import com.example.projetosemestralloja.model.Produto;
@@ -32,7 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BancoPresenter extends AppCompatActivity {
+public class BancoPresenter extends AppCompatActivity implements BancoContrato.presenter {
 
     private ImageView iconVoltar;
     private EditText emailText;

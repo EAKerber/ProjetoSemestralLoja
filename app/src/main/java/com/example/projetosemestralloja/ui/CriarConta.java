@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.projetosemestralloja.interfaces.BancoContrato;
 import com.example.projetosemestralloja.model.Cliente;
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
@@ -39,7 +40,7 @@ public class CriarConta extends AppCompatActivity {
     private EditText numendeText;
     private Button criarContaButton;
 
-    BancoPresenter bp;
+    BancoContrato.presenter bp;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -140,24 +141,6 @@ public class CriarConta extends AppCompatActivity {
         });
     }
 
-//    private void inicializarBanco() {
-//        FirebaseApp.initializeApp(CriarConta.this);
-//        firebaseDatabase = MyFirebaseApp.getFirebaseDatabaseInstance();
-//        databaseReference = firebaseDatabase.getInstance().getReference();
-//    }
-
-//    private void limparDados() {
-//        emailText.setText("");
-//        senhaText.setText("");
-//        nomeText.setText("");
-//        dataNascText.setText("");
-//        cpfText.setText("");
-//        cepText.setText("");
-//        cidadeText.setText("");
-//        bairroText.setText("");
-//        endeText.setText("");
-//        numendeText.setText("");
-//    }
     private void alert(String s){
         Toast.makeText(getBaseContext(),s,Toast.LENGTH_SHORT).show();
     }
