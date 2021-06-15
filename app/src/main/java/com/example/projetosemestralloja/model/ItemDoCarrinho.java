@@ -9,6 +9,7 @@ public class ItemDoCarrinho {
     public String precototalString;
     public String qteselecionadaString;
     public double valor;
+    public long mLastlickTime;
 
 
     public ItemDoCarrinho(long id, Produto produto) {
@@ -19,6 +20,7 @@ public class ItemDoCarrinho {
         this.precototal = (valor * qteselecionada);
         this.precototalString = "";
         this.qteselecionadaString = "";
+        this.mLastlickTime = System.currentTimeMillis();
     }
 
     public long getId() {
@@ -58,6 +60,10 @@ public class ItemDoCarrinho {
     public String getQteselecionadaString() {return qteselecionadaString + (int)getQteselecionada(); }
 
     public void setQteselecionadaString(String qteselecionadaString) {this.qteselecionadaString = qteselecionadaString; }
+
+    public long getmLastlickTime() {return mLastlickTime;}
+
+    public void setmLastlickTime(Long mLastlickTime) {this.mLastlickTime = System.currentTimeMillis();}
 
 }
 

@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.projetosemestralloja.model.Cliente;
 import com.example.projetosemestralloja.MyFirebaseApp;
 import com.example.projetosemestralloja.R;
+import com.example.projetosemestralloja.model.Produto;
+import com.example.projetosemestralloja.model.ProdutoCarrinho;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,13 +35,16 @@ public class LoginScreen extends AppCompatActivity {
     private TextView altsenhaTextView;
     private TextView convidadoTextView;
     private TextView criarContaTextView;
+    private static String cpfLogado;
+    private static String emailLogado;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     MyFirebaseApp m = new MyFirebaseApp();
 
     private List<Cliente> listCliente = new ArrayList<Cliente>();
     private ArrayAdapter<Cliente> arrayAdapterCliente;
-
+    private List<ProdutoCarrinho> listProduto = new ArrayList<ProdutoCarrinho>();
+    public PaginaCarrinho pg = new PaginaCarrinho();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +70,8 @@ public class LoginScreen extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                pesquisarBanco(loginText.getText().toString(), senhaText.getText().toString());
+
+                pesquisarBanco(loginText.getText().toString(), senhaText.getText().toString(), v);
 
             }
         });
@@ -108,6 +114,7 @@ public class LoginScreen extends AppCompatActivity {
                 for (DataSnapshot objSnapshot:dataSnapshot.getChildren()){
                     Cliente c = objSnapshot.getValue(Cliente.class);
                     listCliente.add(c);
+                    System.out.println("cpf " + c.getCpfText());
                 }
             }
 
@@ -117,7 +124,41 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
     }
-    private void pesquisarBanco(String usuario, String senha){
+    private void eventoDatabase1(View v) {
+        databaseReference.child("Carrinho").addValueEventListener(new ValueEventListener() {
+
+            String cpf;
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
+                    ProdutoCarrinho p = objSnapshot.getValue(ProdutoCarrinho.class);
+                    listProduto.add(p);
+
+                    cpf = LoginScreen.retornaCpf();
+                    if (cpf != null) {
+
+                        if (cpf.equals(p.getCpf())) {
+                            System.out.println("Entrou aqui " + p.getCpf() + " cpf 2: " + cpf);
+                            Produto pr = new Produto();
+                            pr.setValor(p.getValor());
+                            pr.setId(p.getId());
+                            pr.setUrl(p.getUrl());
+                            pr.setTitle(p.getTitle());
+                            pr.setDescricao(p.getDescricao());
+                            pr.setCategorias(null);
+                            pg.createItemDoCarrinho(pr, v);
+                            System.out.println("Fim teste ");
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void pesquisarBanco(String usuario, String senha, View v){
         int usuarioValid = 0, senhaValid = 0, size;
         size = listCliente.size();
         Cliente c = new Cliente();
@@ -133,6 +174,7 @@ public class LoginScreen extends AppCompatActivity {
                 senhaValid = 0;
                 System.out.println(listCliente.get(i).getUsuarioText());
                 System.out.println(listCliente.get(i).getSenhaText());
+                System.out.println("CPF " + listCliente.get(i).getCpfText());
                 System.out.println(usuario);
                 System.out.println(senha);
                 if (usuario.equals(listCliente.get(i).getEmailText())) {
@@ -145,7 +187,8 @@ public class LoginScreen extends AppCompatActivity {
                     //startActivity(new Intent(getBaseContext(), 'PROXIMA TELA'));
                     limparDados();
                     alert("Login efetuado com sucesso.");
-                  
+                    cpfLogado = listCliente.get(i).getCpfText();
+                    eventoDatabase1(v);
                     startActivity(new Intent(getBaseContext(), MainActivity2.class));
                     break;
                 }
@@ -160,7 +203,18 @@ public class LoginScreen extends AppCompatActivity {
         senhaText.setText("");
         loginText.setText("");
     }
-
+    public static String retornaCpf(){
+        return cpfLogado;
+    }
+    public static String retornaEmail(){
+        return emailLogado;
+    }
+    public static void setCpfNull() {
+        cpfLogado = null;
+    }
+    public static void setEmailNull() {
+        emailLogado = null;
+    }
     private void alert(String s){
         Toast.makeText(getBaseContext(),s,Toast.LENGTH_SHORT).show();
     }

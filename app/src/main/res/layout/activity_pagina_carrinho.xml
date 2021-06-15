@@ -1,14 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclercarrinho"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_marginTop="?attr/actionBarSize"
-        android:paddingTop="10dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclercarrinho"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_bot_carrinho"
+        android:paddingHorizontal="30dp"
+        android:paddingBottom="25dp"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/prods"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Produto(s):"
+            android:textColor="#2C2929"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/qtd_tot_itens"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(10)"
+            android:textColor="#2C2929"
+            android:textSize="18sp"
+            android:paddingStart="10dp"
+            app:layout_constraintStart_toEndOf="@id/prods"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/preco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total:"
+            android:textColor="#2C2929"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/prods" />
+
+        <TextView
+            android:id="@+id/preco_tot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="190,99"
+            android:textColor="#2C2929"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/qtd_tot_itens" />
+
+        <Button
+            android:id="@+id/btn_comprar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="goToFinalizarCompra"
+            android:text="Comprar"
+            android:textSize="22sp"
+            app:backgroundTint="#A90DA515"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/preco" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
